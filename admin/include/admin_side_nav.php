@@ -27,8 +27,8 @@
                     <i class="align-middle me-2 fas fa-fw fa-address-card"></i> <span class="align-middle">Activites</span>
                 </a>
                 <ul id="page" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-                    <li class="sidebar-item"><a class="sidebar-link" href="./create-service.php">Create</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="./manage-service.php">Manage</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="./create-activity.php">Create</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="./manage-activity.php">Manage</a></li>
 
                 </ul>
             </li>

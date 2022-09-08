@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Attraction </title>
+        <title>Activity</title>
         <link href="css/modern.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" integrity="sha512-f8gN/IhfI+0E9Fc/LKtjVq4ywfhYAVeMGKsECzDUHcFJ5teVwvKTqizm+5a84FINhfrgdvjX8hEJbem2io1iTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -27,7 +27,7 @@
 
                         <div class="header">
                             <h1 class="header-title">
-                                Add a New Attraction
+                                Add a New Activity
                             </h1>
 
                         </div>
@@ -47,7 +47,7 @@
 
                                         <div class="row">
                                             <div class="mb-3 col-md-12">
-                                                <label for="inputEmail4">Title</label>
+                                                <label for="inputEmail4">Activity-name</label>
                                                 <input type="text" class="form-control"  id="title" name="title" >
                                             </div>
 
@@ -55,7 +55,10 @@
                                                 <label for="inputPassword4">Image</label>
                                                 <input type="file" class="form-control"  id="image" name="image">
                                             </div>
-                                            
+                                            <div class="mb-3 col-md-12">
+                                                <label for="inputPassword4">Location</label>
+                                                <input type="text" class="form-control"  name="location" id="location">
+                                            </div>
                                             <div class="mb-3 col-md-12">
                                                 <label for="inputPassword4">Description</label>
                                                 <input type="text" class="form-control"  name="description" id="description">
