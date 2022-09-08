@@ -12,6 +12,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="shortcut icon" href="images/favicon.png" />
+    <Link rel="stylesheet" type="text/css" href="include/plugin/sweetalert/sweetalert/sweetalert.css">
     
     <?php
     include './include/link.php';
@@ -95,49 +96,27 @@
                         </div>
 
 
-                        <?php
-                        include_once 'connect.php';
-                       
-                        if (isset($_POST['submit'])) {
-                            
-                            $name = $_POST['name'];
-                            $email = $_POST['email'];
-                            $phone = $_POST['phone'];
-                            $subject = $_POST['subject'];
-                            $message = $_POST['message'];
-                            $sql = "INSERT INTO inquires (user_id,name,email,phone,subject,message) VALUES ('5','$name','$email','$phone','$subject','$message')";
-                    
-                            if (mysqli_query($conn, $sql)) {
-                                echo("<script> window.alert('Inquiry sent sucessfully');</script>");
-                            } else {
-                                echo "Error: " . $sql . "
-                            " . mysqli_error($conn);
-                            }
-                            mysqli_close($conn);
-                        }
-                        ?>
-
                         <div class="col-md-6 col-lg-6 col-lg-offset-1">
                             <div class="contact-form">
-                                <form id="send-contact-form" action="" method="POST">
+                                <form id="send-contact-form" method="POST">
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <input type="text" class="field-text" name="name" placeholder="Name">
+                                            <input type="text" class="field-text" name="name" placeholder="Name" id="name">
                                         </div>
                                         <div class="col-sm-6">
-                                            <input type="text" class="field-text" name="email" placeholder="Email">
+                                            <input type="text" class="field-text" name="email" placeholder="Email" id="email">
                                         </div>
                                         <div class="col-sm-6">
-                                            <input type="text" class="field-text" name="phone" placeholder="Phone">
+                                            <input type="text" class="field-text" name="number" placeholder="Phone" id="number">
                                         </div>
                                         <div class="col-sm-12">
-                                            <input type="text" class="field-text" name="subject" placeholder="Subject">
+                                            <input type="text" class="field-text" name="subject" placeholder="Subject" id="subject">
                                         </div>
                                         <div class="col-sm-12">
-                                            <textarea cols="30" rows="10" name="message" class="field-textarea" placeholder="Write what do you want"></textarea>
+                                            <textarea cols="30" rows="10" name="message" class="field-textarea" placeholder="Write what do you want" id="message"></textarea>
                                         </div>
                                         <div class="col-sm-6">
-                                            <button type="submit" name="submit" class="awe-btn awe-btn-13">SEND</button>
+                                            <button class="awe-btn awe-btn-13" id="sendInquiry">SEND</button>
                                         </div>
                                     </div>
                                     <div id="contact-content"></div>
@@ -160,6 +139,10 @@
     <?php
     include './include/script.php';
     ?>
+
+
+<script type="text/javascript" src="validations/js/sendInquiries.js"></script>
+<script src="include/plugin/sweetalert/sweetalert/sweetalert.min.js"></script>
 </body>
 
 

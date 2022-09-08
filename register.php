@@ -76,7 +76,7 @@
                         <h2>REGISTER FORM</h2>
                         <p>If you no have account in Willuda Inn! Register and get special discount</p>
                         <div id="message"></div>
-                        <form class="account_form" method="post" name="myform" onsubmit="return(validate());">
+                        <form class="account_form" method="post" name="myform">
                             <div class="field-form">
                                 <input type="text" class="field-text" name="name" id="name" placeholder="Enter your name*" required>
                                 <span class="error" id="name_err"> </span>

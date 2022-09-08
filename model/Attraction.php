@@ -4,10 +4,10 @@ include_once 'DBConnection.php';
 
 class Attraction extends DBconnection {
 
-    private $id
+    private $id;
     private $name;
     private $description;
-    private $image
+    private $image;
     
 
     public function __construct() {
@@ -58,8 +58,6 @@ class Attraction extends DBconnection {
 
         return $query = mysqli_query($this->connection, $sql);
     }
-
-    
 
     //Setters
 
