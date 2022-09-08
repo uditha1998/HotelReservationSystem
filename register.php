@@ -46,34 +46,7 @@
 <!--[if IE 9]> <body class="ie9 lt-ie10"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
 
- <?php
-
-include 'connect.php';
-
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-$name = $_POST['name'];
-$email = $_POST['email'];
-$residance = $_POST['residance'];
-$number = $_POST['number'];
-$password = $_POST['password'];
-$cnfmpassword = $_POST['cnfmpassword'];
-
-$query = "INSERT INTO users(name,email,residance,number,password)
-VALUES('$name','$email','$residance','$number','$password')";
-
-$result = $conn->query($query);
-
-if($result==TRUE){
-
-    header("location:login.php");
-}
-else{
-    echo ("<script>window.alert(\"Failed to register user\")</script>;");  
-}
-}
-
-?>
+ 
 
 
 
