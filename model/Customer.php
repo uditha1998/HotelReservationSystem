@@ -24,8 +24,7 @@ class Customer extends DBconnection {
 
         date_default_timezone_set('Asia/Colombo');
         $createdAt = date('Y-m-d H:i:s');
-
-        $sql = "INSERT INTO `customer` (name, email, residance,number, createdAt, isActive, password) VALUES  ('" . $name . "', '" . $email . "','" . $residance . "','" . $number . "', '" . $createdAt . "', '" . 1 . "', '" . $password . "')";
+        $sql = "INSERT INTO `customer` (name,email,residance,number,createdAt,isActive,password)  VALUES  ('" .$this->name. "', '" .$this->email. "','" .$this->residance. "','" .$this->number. "', '" .$this->createdAt. "', '" . 1 . "', '" .$this->password. "')";
 
         if (mysqli_query($this->connection, $sql)) {
 
@@ -262,4 +261,16 @@ class Customer extends DBconnection {
         }
     }
 
+    public function setSigninDetails($name,$email,$residance,$number,$password){
+
+        $this->name = $name;
+       
+        $this->email = $email;
+        $this->residance = $residance;
+        $this->number = $number;
+        $this->password = $password;
+    }
+
 }
+
+?>

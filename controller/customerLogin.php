@@ -22,3 +22,4 @@ if ($Customer->login()) {
     echo json_encode($result);
 
 }
+?>
