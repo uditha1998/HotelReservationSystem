@@ -25,6 +25,8 @@
     <link rel="stylesheet" type="text/css" href="css/lib/settings.css">
     <link rel="stylesheet" type="text/css" href="css/lib/bootstrap-select.min.css">
     <Link rel="stylesheet" type="text/css" href="css/login.css">
+    <Link rel="stylesheet" type="text/css" href="include/plugin/sweetalert/sweetalert/sweetalert.css">
+
 
     <!-- MAIN STYLE -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -253,6 +255,8 @@
     <script type="text/javascript" src="js/lib/SmoothScroll.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
     <script type="text/javascript" src="js/register.js"></script>
+    <script type="text/javascript" src="validations/js/registervalidation.js"></script>
+    <script src="include/plugin/sweetalert/sweetalert/sweetalert.min.js"></script>
 </body>
 
 <!-- Mirrored from landing.engotheme.com/html/lotus/demo/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Sep 2022 08:12:47 GMT -->
