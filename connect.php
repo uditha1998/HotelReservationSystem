@@ -10,5 +10,8 @@ if($conn->connect_error)
 {
   echo("<script> window.alert('Connection failed');</script>");
 }
+// if($conn){
+//   echo("<script> window.alert('Connection okkkkkkkkkkkk');</script>");
+// }
 
 ?>
