@@ -4,11 +4,11 @@ include_once 'DBConnection.php';
 
 class Activity extends DBconnection {
 
-    private $id
+    private $id;
     private $name;
-    private $location
+    private $location;
     private $description;
-    private $image
+    private $image;
     
 
     public function __construct() {

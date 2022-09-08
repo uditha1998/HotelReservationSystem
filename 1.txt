@@ -284,3 +284,26 @@ protected void onCreate(Bundle savedInstanceState) {
 
   }
 
+
+  <?php
+                        include_once 'connect.php';
+                       
+                        if (isset($_POST['submit'])) {
+                            
+                            $name = $_POST['name'];
+                            $email = $_POST['email'];
+                            $phone = $_POST['phone'];
+                            $subject = $_POST['subject'];
+                            $message = $_POST['message'];
+                            $sql = "INSERT INTO inquires (user_id,name,email,phone,subject,message) VALUES ('5','$name','$email','$phone','$subject','$message')";
+                    
+                            if (mysqli_query($conn, $sql)) {
+                                echo("<script> window.alert('Inquiry sent sucessfully');</script>");
+                            } else {
+                                echo "Error: " . $sql . "
+                            " . mysqli_error($conn);
+                            }
+                            mysqli_close($conn);
+                        }
+                        ?>
+

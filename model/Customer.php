@@ -228,6 +228,16 @@ class Customer extends DBconnection {
 
     
     }
+    
+       public function setSigninDetails($name,$email,$residance,$number,$password){
+
+        $this->name = $name;
+       
+        $this->email = $email;
+        $this->residance = $residance;
+        $this->number = $number;
+        $this->password = $password;
+    }
 
     // Getters
 
@@ -261,15 +271,7 @@ class Customer extends DBconnection {
         }
     }
 
-    public function setSigninDetails($name,$email,$residance,$number,$password){
-
-        $this->name = $name;
-       
-        $this->email = $email;
-        $this->residance = $residance;
-        $this->number = $number;
-        $this->password = $password;
-    }
+ 
 
 }
 
