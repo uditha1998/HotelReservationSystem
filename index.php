@@ -20,6 +20,7 @@
 <body>
 
     <?php
+    session_start();
     include './include/preloader.php';
     ?>
 
