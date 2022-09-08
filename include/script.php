@@ -20,3 +20,4 @@
     <script type="text/javascript" src="js/lib/jquery.validate.min.js"></script>
     <!-- Custom jQuery -->
     <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="js/register.js"></script>
