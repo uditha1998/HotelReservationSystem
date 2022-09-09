@@ -44,6 +44,15 @@
 
             <li class="sidebar-item">
                 <a data-bs-target="#page2" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="align-middle me-2 fas fa-fw fa-book"></i> <span class="align-middle">Service</span>
+                </a>
+                <ul id="page2" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                    <li class="sidebar-item"><a class="sidebar-link" href="./create-service.php">Create</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="./manage-service.php">Manage</a></li>       
+                </ul>
+            </li>
+            <li class="sidebar-item">
+                <a data-bs-target="#page2" data-bs-toggle="collapse" class="sidebar-link collapsed">
                     <i class="align-middle me-2 fas fa-fw fa-book"></i> <span class="align-middle">Gallery</span>
                 </a>
                 <ul id="page2" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
