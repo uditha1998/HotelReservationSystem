@@ -10,10 +10,6 @@ class Helper {
 
 
 
-
-
-
-
         $today = time();
 
 

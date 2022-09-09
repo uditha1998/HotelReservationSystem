@@ -5,7 +5,7 @@ include_once(dirname(__FILE__) . '../../model/include.php');
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Service Manage</title>
+        <title>Activity Manage</title>
         <link href="css/modern.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" integrity="sha512-f8gN/IhfI+0E9Fc/LKtjVq4ywfhYAVeMGKsECzDUHcFJ5teVwvKTqizm+5a84FINhfrgdvjX8hEJbem2io1iTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
@@ -30,33 +30,33 @@ include_once(dirname(__FILE__) . '../../model/include.php');
 
                         <div class="header">
                             <h1 class="header-title">
-                                Manage Services
+                                Manage Activity
                             </h1>
 
                         </div>
                         <div class="col-xl-12 d-flex" style="flex-wrap: wrap">
 
                             <?php
-                            $SERVICE = new Service();
-                            foreach ($SERVICE->getterAllByServices() as $service){
+                            $Activity = new Activity();
+                            foreach ($Activity->getterAllByActivity() as $Activity){
                             ?>
-                            <div class="col-md-3" id="div<?=$service['id']?>">
+                            <div class="col-md-3" id="div<?=$Activity['id']?>">
                                 <div class="card" style="margin-right: 10px">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col mt-0 text-center">
-                                                <h2 class="card-title" style="font-size: 1.1rem;"><?=$service['title']?></h2>
+                                                <h2 class="card-title" style="font-size: 1.1rem;"><?=$Activity['name']?></h2>
                                             </div>
 
                                         </div>
                                         <div class="col">
-                                            <img class="img-responsive img-rounded mt-2 mb-4" src="./../upload/service/<?=$service['image'];?>"  style="width: 100%" width="400">
+                                            <img class="img-responsive img-rounded mt-2 mb-4" src="../upload/activity/<?=$Activity['image'];?>"  style="width: 100%" width="400">
 
                                         </div>
                                         <div class="row" >
 
                                             <div class="col-6">
-                                                <a href="./edit-service.php?id=<?=$service['id'];?>">
+                                                <a href="./edit-activity.php?id=<?=$Activity['id'];?>">
                                                     <div class="avatar">
                                                         <div class="avatar-title rounded-circle bg-primary-dark">
                                                             <i class="align-middle" data-feather="edit"></i>
@@ -67,7 +67,7 @@ include_once(dirname(__FILE__) . '../../model/include.php');
                                             </div>
                                          
                                             <div class="col-6" >
-                                                <a  class="delete-service" data-id="<?=$service['id'];?>">
+                                                <a  class="delete-activity" data-id="<?=$Activity['id'];?>">
                                                     <div class="avatar">
                                                         <div class="avatar-title rounded-circle bg-primary-dark">
                                                             <i class="align-middle" data-feather="trash"></i>
@@ -108,7 +108,7 @@ include_once(dirname(__FILE__) . '../../model/include.php');
 
 
         <script src="js/app.js"></script>
-        <script src="validations/js/service.js" type="text/javascript"></script>
+        <script src="validations/js/activity.js" type="text/javascript"></script>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 // Datatables basic
@@ -179,5 +179,6 @@ include_once(dirname(__FILE__) . '../../model/include.php');
 
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js" integrity="sha512-MqEDqB7me8klOYxXXQlB4LaNf9V9S0+sG1i8LtPOYmHqICuEZ9ZLbyV3qIfADg2UJcLyCm4fawNiFvnYbcBJ1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="validations/js/activity.js" type="text/javascript"></script>
     </body>
 </html>
