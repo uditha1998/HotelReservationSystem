@@ -30,13 +30,15 @@ class Activity extends DBconnection {
         }
     }
 
+
+    
     public function update() {
 
         $sql = "UPDATE  `activity` SET "
                 . "`name` ='" . $this->name . "', "
                 . "`image` ='" . $this->image . "', "
-                . "`description` ='" . $this->description . "', "
                 . "`location` ='" . $this->location . "', "
+                . "`description` ='" . $this->description . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
 
@@ -51,6 +53,7 @@ class Activity extends DBconnection {
             return FALSE;
         }
     }
+  
 
     public function delete() {
 
@@ -70,20 +73,63 @@ class Activity extends DBconnection {
     
     }
 
-    public function setActivity($name,$location,$description,$image) {
+    public function setActivity($name,$image,$location,$description) {
        
-        $this->name = $name;
+        $this->name = $name;   
+        $this->image = $image;
         $this->location = $location;
         $this->description = $description;
-        $this->image = $image;
+    
     }
 
-  
-
-  
     
     // Getters
+    public function getName() {
+        return $this->userName;
+    }
+
+    public function getterAllById($id) {
+
+        if ($id) {
+
+            $sql = "SELECT * FROM `activity` WHERE `id`=" . $id;
+
+            $query = mysqli_query($this->connection, $sql);
+
+            $result = $query->fetch_assoc();
+
+
+            $this->id = $result['id'];
+            $this->title = $result['name'];
+            $this->image = $result['image'];
+            $this->title = $result['location'];
+            $this->description = $result['description'];
+           
+
+
+
+
+            return $result;
+        }
+    }
+
+    public function getterAllByActivity() {
+
+
+
+        $sql = "SELECT * FROM `activity` ";
+
+        $query = mysqli_query($this->connection, $sql);
+
+        $array_res = array();
+        while ($row = $query->fetch_assoc()) {
+
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+
+}
 
     
 
-}

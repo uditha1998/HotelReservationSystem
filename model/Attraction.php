@@ -31,10 +31,10 @@ class Attraction extends DBconnection {
 
     public function update() {
 
-        $sql = "UPDATE  `attraction` SET "
+        $sql = "UPDATE  `activity` SET "
                 . "`name` ='" . $this->name . "', "
                 . "`image` ='" . $this->image . "', "
-                . "`description` ='" . $this->description . "', "
+                . "`description` ='" . $this->description . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
 
@@ -65,15 +65,60 @@ class Attraction extends DBconnection {
         $this->id = $id;
     }
 
-    public function setAttraction($name,$description,$image) {
+    public function setAttraction($name,$image,$description) {
        
-        $this->name = $name;
-        $this->description = $description;
+        $this->name = $name; 
         $this->image = $image;
+        $this->description = $description;
+       
     }
     
     // Getters
 
+        // Getters
+        public function getName() {
+            return $this->userName;
+        }
+    
+        public function getterAllById($id) {
+    
+            if ($id) {
+    
+                $sql = "SELECT * FROM `attraction` WHERE `id`=" . $id;
+    
+                $query = mysqli_query($this->connection, $sql);
+    
+                $result = $query->fetch_assoc();
+    
+    
+                $this->id = $result['id'];
+                $this->title = $result['name'];
+                $this->description = $result['description'];
+                $this->image = $result['image'];
+    
+    
+    
+    
+                return $result;
+            }
+        }
+    
+        public function getterAllByAttraction() {
+    
+    
+    
+            $sql = "SELECT * FROM `attraction` ";
+    
+            $query = mysqli_query($this->connection, $sql);
+    
+            $array_res = array();
+            while ($row = $query->fetch_assoc()) {
+    
+                array_push($array_res, $row);
+            }
+            return $array_res;
+        }
+    
+    }
     
 
-}
