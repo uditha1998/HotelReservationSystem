@@ -69,6 +69,12 @@
                     <li class="sidebar-item"><a class="sidebar-link" href="./view-customer.php">View</a></li>       
                 </ul>
             </li>
+             <li class="sidebar-item">
+                 <a data-bs-target="#page3" href="./view-booking.php" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="align-middle me-2 fas fa-fw fa-book"></i> <span class="align-middle">Bookings</span>
+                </a>
+               
+            </li>
 
 
 
