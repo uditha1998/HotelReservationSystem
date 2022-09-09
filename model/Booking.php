@@ -66,11 +66,12 @@ class Booking extends DBconnection {
             return FALSE;
         }
     }
-    public function reject() {
+   public function reject() {
 
-       $sql = "UPDATE  `booking` SET "
+        $sql = "UPDATE  `booking` SET "
                 . "`status` = 0  "
                 . "WHERE `id` = '" . $this->id . "'";
+
 
         $query = mysqli_query($this->connection, $sql);
 

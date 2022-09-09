@@ -64,7 +64,24 @@ include_once(dirname(__FILE__) . '../../model/include.php');
                                             <td><?= $bookings['quantity'] ?></td>
                                             <td><?= $bookings['date'] ?></td>
                                             <td><?= $bookings['serviceType'] ?></td>
-                                            <td><?= $bookings['status'] ?></td>
+                                            <td>
+                                                <?php
+                                                if($bookings['status']==1){
+                                                    ?>
+                                                
+                                                                                                <a  class="btn btn-primary">Active</a>
+
+                                                <?php
+                                                    
+                                                } else{
+                                                ?>
+                                                <a  class="btn btn-danger">Rejected</a>
+                                                <?php
+                                                
+                                                }
+                                                ?>
+
+                                            </td>
                                             <td><a href="./view-single-booking.php?id=<?= $bookings['id'] ?>" class="btn btn-success"></btn>View</td>
 
 
