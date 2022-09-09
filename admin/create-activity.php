@@ -48,12 +48,12 @@
                                         <div class="row">
                                             <div class="mb-3 col-md-12">
                                                 <label for="inputEmail4">Activity-name</label>
-                                                <input type="text" class="form-control"  id="title" name="title" >
+                                                <input type="text" class="form-control"  id="name" name="name" >
                                             </div>
 
                                             <div class="mb-3 col-md-12">
                                                 <label for="inputPassword4">Image</label>
-                                                <input type="file" class="form-control"  id="image" name="image">
+                                                <input type="file" class="form-control"  id="imageaa" name="imageaa">
                                             </div>
                                             <div class="mb-3 col-md-12">
                                                 <label for="inputPassword4">Location</label>
@@ -94,7 +94,7 @@
 
 
         <script src="js/app.js"></script>
-        <script src="js/ajax/service.js" type="text/javascript"></script>
+        <script src="validations/js/activity.js" type="text/javascript"></script>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 // Datatables basic

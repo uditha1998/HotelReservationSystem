@@ -20,7 +20,7 @@ class Activity extends DBconnection {
         date_default_timezone_set('Asia/Colombo');
         $createdAt = date('Y-m-d H:i:s');
 
-        $sql = "INSERT INTO `activity` (name, description,location, image) VALUES  ('" . $name . "', '" . $description . "', '" . $location. "','" . $image. "')";
+        $sql = "INSERT INTO `activity` (name, description,location, image) VALUES  ('" . $this->name . "', '" . $this->description . "', '" . $this->location. "','" . $this->image. "')";
 
         if (mysqli_query($this->connection, $sql)) {
 
@@ -67,7 +67,18 @@ class Activity extends DBconnection {
 
     public function setId($id) {
         $this->id = $id;
+    
     }
+
+    public function setActivity($name,$location,$description,$image) {
+       
+        $this->name = $name;
+        $this->location = $location;
+        $this->description = $description;
+        $this->image = $image;
+    }
+
+  
 
   
     
