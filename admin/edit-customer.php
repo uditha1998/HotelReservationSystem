@@ -38,7 +38,11 @@
                                 <div class="card-body" style="margin-top: 20px;">
 
                                     
-                                    <form>
+                                    <form method="POST">
+                                        <?php
+                                        $CUSTOMER = new Customer();
+                                        $customer = $CUSTOMER->getterAllById($id);
+                                        ?>
                                         <div class="form-group row">
                                             <label for="staticId" class="col-sm-2 col-form-label">ID</label>
                                             <div class="col-sm-10">
@@ -49,43 +53,43 @@
                                         <div class="form-group row">
                                             <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
                                             <div class="col-sm-10">
-                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="ecample@gmail.com">
+                                            <input type="text" readonly class="form-control-plaintext" id="email" value="<?= $customer['email'] ?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputName">Name</label>
-                                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name" required>
+                                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name" required value="<?= $customer['name'] ?>">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputName">Residance</label>
-                                            <input type="text" class="form-control" id="residance" aria-describedby="emailHelp" placeholder="Residance" required>
+                                            <input type="text" class="form-control" id="residance" aria-describedby="emailHelp" placeholder="Residance" required value="<?= $customer['residance'] ?>">
                                         </div>
 
                                          <div class="form-group">
                                             <label for="exampleInputName">Contact Number</label>
-                                            <input type="number" class="form-control" id="number" aria-describedby="emailHelp" placeholder="number" required>
+                                            <input type="number" class="form-control" id="number" aria-describedby="emailHelp" placeholder="number" required value="<?= $customer['number'] ?>">
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="staticCreateTime" class="col-sm-2 col-form-label">Created At</label>
                                             <div class="col-sm-10">
-                                            <input type="text" readonly class="form-control-plaintext" id="createdAt" value="Created Time">
+                                            <input type="text" readonly class="form-control-plaintext" id="createdAt" value="<?= $customer['createdAt'] ?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="staticStatus" class="col-sm-2 col-form-label">Status</label>
                                             <div class="col-sm-10">
-                                            <input type="text" readonly class="form-control-plaintext" id="status" value="Active">
+                                            <input type="text" readonly class="form-control-plaintext" id="status" value="<?= $customer['isActive'] ?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="staticLastLogin" class="col-sm-2 col-form-label">Last Login</label>
                                             <div class="col-sm-10">
-                                            <input type="text" readonly class="form-control-plaintext" id="lastLogin" value="Last login">
+                                            <input type="text" readonly class="form-control-plaintext" id="lastLogin" value="<?= $customer['lastLogin'] ?>">
                                             </div>
                                         </div>
 
@@ -241,7 +245,7 @@
         </script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js" integrity="sha512-MqEDqB7me8klOYxXXQlB4LaNf9V9S0+sG1i8LtPOYmHqICuEZ9ZLbyV3qIfADg2UJcLyCm4fawNiFvnYbcBJ1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script type="text/javascript" src="js/ajax/customerMng.js"></script>
+        <script type="text/javascript" src="validations/js/customerMng.js"></script>
 
     </body>
 </html>
