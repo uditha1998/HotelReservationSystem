@@ -215,6 +215,59 @@ class Customer extends DBconnection {
         return TRUE;
     }
 
+    public function unblockCustomer($id){
+
+        $sql = "UPDATE `customer` SET `isActive` ='" . 1 . "' WHERE `id`='" . $id . "'";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        if ($result) {
+
+            return TRUE;
+        } else {
+
+            return FALSE;
+        }
+    }
+
+    public function blockCustomer($id){
+
+        $sql = "UPDATE `customer` SET `isActive` ='" . 0 . "' WHERE `id`='" . $id . "'";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        if ($result) {
+
+            return TRUE;
+        } else {
+
+            return FALSE;
+        }
+    }
+
+    public function updateCustomer($id,$name,$residance,$number){
+
+        $sql = "UPDATE `customer` SET `name` ='" . $name . "', `residance` = '" . $residance . "', `number` = '" . $number . "' WHERE `id`='" . $id . "'";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        if ($result) {
+
+            return TRUE;
+        } else {
+
+            return FALSE;
+        }
+
+    }
+
+    public function deleteCustomer(){
+        $sql = 'DELETE FROM `customer` WHERE id="' . $this->id . '"';
+
+        return $query = mysqli_query($this->connection, $sql);
+    }
+
+
     //Setters
 
     public function setId($id) {
@@ -269,6 +322,22 @@ class Customer extends DBconnection {
 
             return $result;
         }
+    }
+
+    public function getAllCustomers() {
+
+
+
+        $sql = "SELECT * FROM `customer` ";
+
+        $query = mysqli_query($this->connection, $sql);
+
+        $array_res = array();
+        while ($row = $query->fetch_assoc()) {
+
+            array_push($array_res, $row);
+        }
+        return $array_res;
     }
 
  

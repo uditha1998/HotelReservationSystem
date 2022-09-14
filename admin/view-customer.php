@@ -1,4 +1,7 @@
+<?php
+include_once(dirname(__FILE__) . '../../model/include.php');
 
+?>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -53,53 +56,42 @@
                                             </thead>
                                             <tbody>
                                                 <?php
+                                                    $CUSTOMER = new Customer();
+                                                    foreach ($CUSTOMER->getAllCustomers() as $customer){
 
-                                                $serverName = "localhost";
-                                                $userName = "root";
-                                                $password = "";
-                                                $databaseName = "willudainn";
-
-                                                $connection = new mysqli($serverName,$userName,$password,$databaseName);
-
-                                                if($connection->connect_error){
-                                                    die("Connection failed".$connection->connect_error);
-                                                }
-
-                                                $sql = "SELECT * FROM customer";
-                                                $result = $connection->query($sql);
-
-                                                if(!$result){
-                                                    die("Invalid query".$connection->error);
-                                                }
-
-
-                                                while($row = $result->fetch_assoc()){
-
-                                                     $id = $row['id'];
-                                                     $name = $row['name'];
-                                                    // $email = $row['email'];
-?>
+                                                        if($customer['isActive']==0){
+                                                            $status='<span style="color:red">Blocked</span>';
+                                                            $blockbtn="Unblock";
+                                                        }else{
+                                                            $status='<span style="color:green">Active</span>';
+                                                            $blockbtn="Block";
+                                                        }
+                                                        
+                                                ?>
                                                     
-                                                        <td><?php echo $row['id'] ?></td>
+                                                        <td><?php echo $customer['id']?></td>
 
-                                                        <td><?php echo $row['name'] ?></td>
+                                                        <td><?php echo $customer['name']?></td>
 
-                                                        <td><?php echo $row['email'] ?></td>
+                                                        <td><?php echo $customer['email']?></td>
 
-                                                        <td><?php echo $row['residance'] ?></td>
+                                                        <td><?php echo $customer['residance']?></td>
 
-                                                        <td><?php echo $row['number'] ?></td>
+                                                        <td><?php echo $customer['number']?></td>
 
-                                                        <td><?php echo $row['createdAt'] ?></td>
+                                                        <td><?php echo $customer['createdAt']?></td>
 
-                                                        <td><?php echo $row['isActive'] ?></td>
+                                                        <td><?php echo $status?></td>
 
-                                                        <td><?php echo $row['lastLogin'] ?></td>
+                                                        <td><?php echo $customer['lastLogin']?></td>
 
                                                         <td>
-                                                        <a class='btn btn-danger' role='button' id='block'>Block</a>
+                                                        <a class='block-customer' role='button' data-id="<?=$customer['id'];?>"
+                                                        status="<?=$customer['isActive'];?>">
+                                                            <button type="button" class="btn btn-danger"><?php echo $blockbtn?></button>
+                                                        </a>
                                                         <span>
-                                                        <a class='btn btn-primary' role='button' href="edit-customer.php">Edit</a>
+                                                        <a class='btn btn-primary' role='button' href="edit-customer.php?id=<?=$customer['id'];?>">Edit</a>
                                                         </span>
                                                         </td>
                                                         </tr>
@@ -135,7 +127,6 @@
 
 
         <script src="js/app.js"></script>
-        <script src="js/ajax/service.js" type="text/javascript"></script>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 // Datatables basic
@@ -260,7 +251,7 @@
         </script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js" integrity="sha512-MqEDqB7me8klOYxXXQlB4LaNf9V9S0+sG1i8LtPOYmHqICuEZ9ZLbyV3qIfADg2UJcLyCm4fawNiFvnYbcBJ1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script type="text/javascript" src="js/ajax/customerMng.js"></script>
+        <script type="text/javascript" src="validations/js/customerMng.js"></script>
 
     </body>
 </html>
