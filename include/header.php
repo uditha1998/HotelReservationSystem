@@ -36,7 +36,7 @@
         <nav class="header_menu">
             <ul class="menu">
                 <li class="current-menu-item">
-                    <a href="#">Home </a>
+                    <a href="index.php">Home </a>
                     
                 </li>
                 <li>
@@ -44,7 +44,7 @@
                 </li>
 
                 <li>
-                    <a href="#">Room</a>
+                    <a href="services.php">services</a>
                    
                 </li>
               <li>
