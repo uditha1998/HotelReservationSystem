@@ -1,3 +1,8 @@
+<?php
+include_once(dirname(__FILE__) . '../../model/include.php');
+
+$id = $_GET['id'];
+?>
 
 <html>
     <head>
@@ -42,11 +47,18 @@
                                         <?php
                                         $CUSTOMER = new Customer();
                                         $customer = $CUSTOMER->getterAllById($id);
+
+                                        if($customer['isActive']==0){
+                                            $blockbtn="Unblock";
+                                        }
+                                        else{
+                                            $blockbtn="Block";
+                                        }
                                         ?>
                                         <div class="form-group row">
                                             <label for="staticId" class="col-sm-2 col-form-label">ID</label>
                                             <div class="col-sm-10">
-                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="customer's ID">
+                                            <input type="text" readonly class="form-control-plaintext" id="id" value="<?= $customer['id'] ?>">
                                             </div>
                                         </div>
 
@@ -93,7 +105,16 @@
                                             </div>
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary">Update</button>
+                                        <button type="button" class="btn btn-primary" id="update">Update</button>
+                                        <span style="margin-left:500px">
+                                                        <a class='block-customer' role='button' data-id="<?=$customer['id'];?>"
+                                                        status="<?=$customer['isActive'];?>">
+                                                            <button type="button" class="btn btn-danger"><?php echo $blockbtn?></button>
+                                                        </a>                                       
+                                         </span>
+                                         <span style="margin-left:300px">
+                                            <button type="button" class="btn btn-warning" id="delete">Delete</button>
+                                         </span>
                                         </form>
 
                                 </div>
@@ -120,7 +141,6 @@
 
 
         <script src="js/app.js"></script>
-        <script src="js/ajax/service.js" type="text/javascript"></script>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 // Datatables basic
