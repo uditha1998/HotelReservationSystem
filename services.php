@@ -81,7 +81,7 @@
                                 <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                                     <div>
                                         <h3 class="card-title pt-2" style="margin-left:60px; color:white; margin-top:60px">Accommodation</h3>
-                                        <a class="btn btn-primary" href="#"><i class="fas fa-clone left"></i>Click Here</a>
+                                        <a class="btn btn-primary" href="./book-accommodation.php"><i class="fas fa-clone left"></i>Click Here</a>
                                     </div>
                                 </div>
 

@@ -4,7 +4,6 @@ $(document).ready(function () {
 
             $("#loginbtn").click(function (event) {
                 event.preventDefault();
-                ;
 
                 if (!$('#email').val() || $('#email').val().length === 0) {
                     swal({
@@ -64,5 +63,6 @@ $(document).ready(function () {
 
                 }
             });
+
 
         });

@@ -1,83 +1,26 @@
-<?php
-
-include 'connect.php';
-
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-$name = $_POST['name'];
-$email = $_POST['email'];
-$residance = $_POST['residance'];
-$number = $_POST['number'];
-$password = $_POST['password'];
-$cnfmpassword = $_POST['cnfmpassword'];
-
-$query = "INSERT INTO users(name,email,residance,number,password)
-VALUES('$name','$email','$residance','$number','$password')";
-
-$result = $conn->query($query);
-
-if($result==TRUE){
-
-    header("location:login.php");
-}
-else{
-    echo ("<script>window.alert(\"Failed to register user\")</script>;");  
-}
-}
-
-?>
-
-<?php
-
-include'connect.php';
-
- if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-        if(!isset($_POST['email'])){
-            echo ("<script>window.alert(\"Email required\")</script>");
-
-        }else if(!isset($_POST['password'])){
-            echo ("<script>window.alert(\"Password required\")</script>");
-
-        }else{
-
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        $query="SELECT * FROM users WHERE email='".$email."' AND password='".$password."' limit 1";
-       // $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-
-        $result=$conn->query($query);
-        //$result = mysql_query($query);
-
-        if($result->num_rows==1)
-        {
-            echo "Successfully login";
-            header("location:index.php");
-            exit();
-
-        // echo '
-        // <script type="text/javascript">
-
-        // $(document).ready(function(){
-
-        // swal({
-        //     position: "top-end",
-        //     type: "success",
-        //     title: "Your work has been saved",
-        //     showConfirmButton: false,
-        //     timer: 1500
-        // })
-        // });
-
-        // </script>
-        // ';
-            
-        }
-        else
-        {
-            echo ("<script>window.alert(\"Error logging in\")</script>");
-        } 
-    }
-}
-?>
+<table class="table">
+                                                <thead>
+                                                    <tr>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                    <td>Samsung TV</td>
+                                                    <td><i class="fas fa-dollar-sign"></i> 500,00</td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td>JBL Speaker</td>
+                                                    <td><i class="fas fa-dollar-sign"></i> 300,00</td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td>Macbook Air</td>
+                                                    <td><i class="fas fa-dollar-sign"></i> 1000,00</td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td>Iphone 11 PRO</td>
+                                                    <td><i class="fas fa-dollar-sign"></i> 5000,00</td>
+                                                    </tr>
+                                                </tbody>
+                                                </table>
