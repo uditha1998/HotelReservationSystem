@@ -2,9 +2,13 @@
 session_start();
     if(!isset($_SESSION)){
         $discount_msg = '<span style="color:red">Create account at Willuda Inn and get 10% discount</span> <span><u><a href="register.php">Regsiter</a></u></span>';
+        $discount = "0%";
+        $loggedStatus = "false";
     }
     else{
         $discount_msg = '<span style="color:green">You will get 10% discount for per booking</span>';
+        $discount = "10%";
+        $loggedStatus = "true";
     }
 ?>
 <!DOCTYPE html>
@@ -98,6 +102,7 @@ session_start();
 
                                     <!--Section heading-->
                                     <h2 class="h1-responsive font-weight-bold text-center my-4">Booking Form</h2>
+                                    <input type="hidden" id="isLoggedUser" value="<?php echo $loggedStatus?>">
 
                                     <div class="row">
 
@@ -195,10 +200,11 @@ session_start();
 
                         <!-- Invoice -->
 
+
                         <div class="col-md-6 col-lg-3" style="display:none;" id="invoice">
 
                             <div class="col">
-                                       <div class="card" style="margin-top:100px" >
+                                       <div class="card" style="margin-top:40px" >
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div>
@@ -240,14 +246,17 @@ session_start();
                                                 <div class="row">
                                                     <div>
                                                     <ul class="list-unstyled float-end me-0">
-                                                        <li><span class="me-3 float-start">Discount:</span><i class="fas fa-dollar-sign" style="margin-left:60px"></i> 10%
+                                                        <li><span class="me-3 float-start">Charge per person:</span><i class="fas fa-dollar-sign" ></i> 2500.00
                                                         </li>
-                                                         <li> <span class="me-5">Totoal Amount:</span><i class="fas fa-dollar-sign" ></i><span id="invoTotal">---</span> 
+                                                        <li><span class="me-3 ">Discount:</span><i class="fas fa-dollar-sign" style="margin-left:60px"></i>-<?php echo $discount?>
+                                                        </li>
+                                                        <hr>
+                                                         <li> <span class="me-5">Totoal Amount:</span><i class="fas fa-dollar-sign" ></i><span id="invoTotal">000</span><span>.00</span>
                                                         </li>
                                                     </ul>
                                                     </div>
                                                 </div>
-                                                <hr>
+                                                
                                                  <span style="margin-left:50px"><a class="btn btn-success" id="booking">Confirm Booking</a></span>
                                                 
                                             </div>

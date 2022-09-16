@@ -70,10 +70,12 @@
                 </ul>
             </li>
              <li class="sidebar-item">
-                 <a data-bs-target="#page3" href="./view-booking.php" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                 <a data-bs-target="#page4" data-bs-toggle="collapse" class="sidebar-link collapsed">
                     <i class="align-middle me-2 fas fa-fw fa-book"></i> <span class="align-middle">Bookings</span>
                 </a>
-               
+               <ul id="page4" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                    <li class="sidebar-item"><a class="sidebar-link" href="./view-booking.php">View</a></li>       
+                </ul>
             </li>
 
             <li class="sidebar-item">
