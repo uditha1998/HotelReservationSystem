@@ -1,3 +1,14 @@
+<?php
+if(isset($_SESSION['id'])){
+   $logoutbtn = 'LogOut';
+   $loginbtn = '';
+   $registerbtn = '';
+}else{
+    $logoutbtn = '';
+    $loginbtn = 'Login';
+    $registerbtn = 'register to claim special discounts';
+}
+?>
 <!-- HEADER -->
 <header id="header">
 
@@ -12,8 +23,10 @@
         <div class="header_right float-right">
 
             <span class="login-register">
-                <a href="login.php">Login</a>
-                <a href="register.php">register to claim special discounts</a>
+                <a type="button" href="#" id="logout"><?php echo $logoutbtn?></a>
+                <a href="login.php"><?php echo $loginbtn?></a>
+                <a href="register.php"><?php echo $registerbtn?></a>
+                
             </span>
 
 
@@ -79,6 +92,8 @@
     </div>
 </div>
 <!-- END / HEADER LOGO & MENU -->
+<script type="text/javascript" src="validations/js/logout.js"></script>
+
 
 </header>
 <!-- END / HEADER -->

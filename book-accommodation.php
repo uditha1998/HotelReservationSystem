@@ -1,14 +1,21 @@
 <?php
 session_start();
-    if(!isset($_SESSION)){
+    if(!isset($_SESSION['id'])){
         $discount_msg = '<span style="color:red">Create account at Willuda Inn and get 10% discount</span> <span><u><a href="register.php">Regsiter</a></u></span>';
         $discount = "0%";
         $loggedStatus = "false";
+        $name = "";
+        $email = "";
+        $number = "";
+
     }
     else{
         $discount_msg = '<span style="color:green">You will get 10% discount for per booking</span>';
         $discount = "10%";
         $loggedStatus = "true";
+        $name = $_SESSION['name'];
+        $email = $_SESSION['email'];
+        $number = $_SESSION['number'];
     }
 ?>
 <!DOCTYPE html>
@@ -71,6 +78,7 @@ session_start();
                 <div class="container">
                     <div class="text text-center">
                         <h2>Book Accommodation</h2>
+                        
                     </div>
                 </div>
 
@@ -102,6 +110,7 @@ session_start();
 
                                     <!--Section heading-->
                                     <h2 class="h1-responsive font-weight-bold text-center my-4">Booking Form</h2>
+                                    
                                     <input type="hidden" id="isLoggedUser" value="<?php echo $loggedStatus?>">
 
                                     <div class="row">
@@ -117,7 +126,8 @@ session_start();
                                                         <div class="md-form mb-0">
                                                             <i class="fas fa-user prefix"></i>
                                                             <label for="subject" class="">Name*</label>
-                                                            <input type="text" id="name" name="name" class="form-control">
+                                                            <input type="text" id="name" name="name" class="form-control"
+                                                            value="<?php echo $name ?>">
                                                             
                                                         </div>
                                                     </div>
@@ -129,7 +139,8 @@ session_start();
                                                         <div class="md-form mb-0">
                                                             <i class="fas fa-envelope prefix"></i>
                                                             <label for="subject" class="">Email*</label>
-                                                            <input type="text" id="email" name="email" class="form-control">
+                                                            <input type="text" id="email" name="email" class="form-control"
+                                                            value="<?php echo $email ?>">
                                                             
                                                         </div>
                                                     </div>
@@ -140,7 +151,8 @@ session_start();
                                                     <div class="col-md-12">
                                                         <div class="md-form mb-0">
                                                             <label for="subject" class="">Contact No*</label>
-                                                            <input type="text" id="number" name="number" class="form-control">
+                                                            <input type="text" id="number" name="number" class="form-control"
+                                                            value="<?php echo $number ?>">
                                                             
                                                         </div>
                                                     </div>
@@ -177,6 +189,8 @@ session_start();
                                                 <!--Grid column-->
 
                                             </div>
+                                            <input type="hidden" id="serviceType" value="Accommodation">
+                                            <input type="hidden" id="cusId" value="<?php echo $_SESSION['id']?>">
                                              <br>
 
                                             
@@ -285,7 +299,7 @@ session_start();
     include './include/script.php';
     ?>
 
-
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="validations/js/bookingMng.js"></script>
       <script src="include/plugin/sweetalert/sweetalert/sweetalert.min.js"></script>
