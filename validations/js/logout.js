@@ -1,35 +1,15 @@
+    
+    
+    $("#logout").click(function () {
+                    
+            $.ajax({
+                        url: "controller/customerLogout.php",
 
-$(document).ready(function () {
-            //Create slider
-
-            $("#loginbtn").click(function (event) {
-                event.preventDefault();
-
-                if (!$('#email').val() || $('#email').val().length === 0) {
-                    swal({
-                        title: "Error!",
-                        text: "Please enter email..!",
-                        type: 'error',
-                        timer: 2000,
-                        showConfirmButton: true
-                    });
-                } else if (!$('#password').val() || $('#password').val().length === 0) {
-                    swal({
-                        title: "Error!",
-                        text: "Please enter Password..!",
-                        type: 'error',
-                        timer: 2000,
-                        showConfirmButton: true
-                    });
-                } else {
-                    var email = $('#email').val();
-
-                    var password = $('#password').val()
-                    $.ajax({
                         type: "POST",
-                        url: "controller/customerLogin.php",
-                        data: {email: email, password: password},
-                        dataType: "json",
+
+                        data: {option: 'logout'},
+
+                        dataType: "JSON",
                         //if received a response from the server
                         success: function (result) {
 
@@ -61,7 +41,5 @@ $(document).ready(function () {
 
                     });
 
-                }
-            });
-
-        });
+                    
+    });

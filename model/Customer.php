@@ -210,6 +210,9 @@ class Customer extends DBconnection {
 
         unset($_SESSION["username"]);
 
+        session_unset();
+        session_destroy();
+
 
 
         return TRUE;

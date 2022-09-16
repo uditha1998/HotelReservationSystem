@@ -8,6 +8,7 @@ class Booking extends DBconnection {
     private $serviceType;
     private $checkIn;
     private $checkOut;
+    private $createdAt;
     private $date;
     private $quantity;
     private $status;
@@ -18,28 +19,22 @@ class Booking extends DBconnection {
 
     public function __construct() {
         parent::__construct();
-        $this->customerId = '';
-        $this->customerEmail = '';
-        $this->customerName = '';
-        $this->customerTelephone = '';
     }
 
     public function create() {
 
         date_default_timezone_set('Asia/Colombo');
-        $createdAt = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO `customer` (name,serviceType,checkIn,checkOut,date,quantity,status,customerId,customerEmail,customerName,customerTelephone)  VALUES  ('"
-                . $this->name . "', '"
+        $this->createdAt = date('Y-m-d H:i:s');
+        $sql = "INSERT INTO `booking` (serviceType,checkIn,checkOut,date,quantity,customerId,customerName,customerEmail,customerTelephone)  VALUES  ('"
                 . $this->serviceType . "','"
                 . $this->checkIn . "','"
                 . $this->checkOut . "', '"
-                . $this->date . "', '"
+                . $this->createdAt . "', '"
                 . $this->quantity . "', '"
-                . $this->status . "', '"
                 . $this->customerId . "', '"
-                . $this->customerEmail . "', '"
                 . $this->customerName . "', '"
-                . $this->customerName . "')";
+                . $this->customerEmail . "', '"
+                . $this->customerTelephone . "')";
 
         if (mysqli_query($this->connection, $sql)) {
 
@@ -245,6 +240,9 @@ class Booking extends DBconnection {
     function getCustomerTelephone() {
         return $this->customerTelephone;
     }
+
+
+
 
 }
 

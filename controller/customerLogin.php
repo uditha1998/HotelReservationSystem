@@ -1,25 +1,27 @@
 <?php
 include_once '../model/Customer.php';
-$email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+            $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
 
-$password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+            $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
-$Customer = new Customer();
+            $Customer = new Customer();
 
-$Customer->setLoginCredentials($email, $password);
+            $Customer->setLoginCredentials($email, $password);
 
-if ($Customer->login()) {
+            if ($Customer->login()) {
 
-    $result = ["status" => 'success'];
+                $result = ["status" => 'success'];
 
-    echo json_encode($result);
+                echo json_encode($result);
 
 
-} else {
+            } else {
 
-    $result = ["status" => 'fail'];
+                $result = ["status" => 'fail'];
 
-    echo json_encode($result);
+                echo json_encode($result);
 
-}
+            }
+
+        
 ?>
