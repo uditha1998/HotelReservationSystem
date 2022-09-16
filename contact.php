@@ -40,7 +40,7 @@
                 <div class="container">
                     <div class="text text-center">
                         <h2>CONTACT US</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing</p>
+                        <p>We create lifestyle experiences, with a touch of warmth.</p>
                     </div>
                 </div>
 
@@ -59,7 +59,9 @@
 
                             <div class="text">
                                 <h2>Contact US</h2>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                                <p>We started our journey drawing inspiration from our country’s most valuable spice, cinnamon. Just like its pleasant flavour and warm aroma, we infuse a rejuvenating spirit into every experience the world discovers with us.</p>
+
+                                <p>Today, with each property we present a new Sri Lanka that houses a contemporary outlook and a genial atmosphere. Together, they put us on the world map beyond the boundaries of hospitality. They make us a group passionate about living the true essence of each moment. </p>
                                 <ul>
                                     <li><i class="icon lotus-icon-location"></i> 225 Beach Street, Australian</li>
                                     <li><i class="icon lotus-icon-phone"></i> +61 2 6854 8496</li>

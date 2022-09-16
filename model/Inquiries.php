@@ -11,6 +11,7 @@ class Inquiries extends DBconnection {
     private $subject;
     private $message;
     private $created_at;
+    private $status;
 
     public function __construct() {
         parent::__construct();
@@ -42,6 +43,54 @@ class Inquiries extends DBconnection {
         $this->subject = $subject;
         $this->message = $message;
 
+    }
+    public function deleteInquiry($id){
+
+
+        $sql = 'DELETE FROM `inquiries` WHERE id="' . $id . '"';
+
+        if(mysqli_query($this->connection, $sql)){
+            return TRUE;
+        }
+        else{
+            return FALSE;
+        }
+    }
+
+    public function getAllById($id){
+
+        if($id){
+
+            $sql = "SELECT * FROM `inquiries` where `id`=". $id;
+
+            $query = mysqli_query($this->connection,$sql);
+
+            $result = $query->fetch_assoc();
+
+            $this->id = $result['id'];
+            $this->name = $result['name'];
+            $this->email = $result['email'];
+            $this->number = $result['number'];
+            $this->subject = $result['subject'];
+            $this->message = $result['message'];
+            $this->created_at = $result['created_at'];
+            $this->status = $result['status'];
+
+            return $result;
+        }
+    }
+
+    public function markResponse($id){
+
+        $sql ="UPDATE `inquiries` SET `status` ='" . 1 . "' WHERE `id`='" .$id. "'";
+
+        $result = mysqli_query($this->connection,$sql);
+
+        if($result){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
     }
 
 
