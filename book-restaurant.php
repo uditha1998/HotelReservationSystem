@@ -66,7 +66,7 @@ session_start();
             <div class="sub-banner">
                 <div class="container">
                     <div class="text text-center">
-                        <h2>Book Accommodation</h2>
+                        <h2>Book Restaurant</h2>
                     </div>
                 </div>
 
@@ -147,6 +147,11 @@ session_start();
                                                         </div>
                                                     </div>
                                                 </div>
+<br>
+                                                <div class="form-group shadow-textarea">
+                                                    <label for="exampleFormControlTextarea6">Meal Description</label>
+                                                    <textarea class="form-control z-depth-1" id="mealDescription" rows="3" placeholder="Enter meal type breakfirst lunch or dinner and what are the meals you want"></textarea>
+                                                    </div>
 
                                                <!-- Material input -->
                                                <br>
@@ -163,28 +168,23 @@ session_start();
                                                 <!--Grid column-->
                                                 <div class="col-md-6">
                                                     <div class="md-form mb-0">
-                                                        <label for="name" class="">Check In</label>
-                                                        <input type="date" id="checkin" name="checkin" class="form-control">
+                                                        <label for="name" class="">Date</label>
+                                                        <input type="date" id="date" name="checkin" class="form-control">
                                                     </div>
                                                 </div>
                                                 <!--Grid column-->
 
                                                 <!--Grid column-->
-                                                <div class="col-md-6">
-                                                    <div class="md-form mb-0">
-                                                        <label for="name" class="">Check Out</label>
-                                                        <input type="date" id="checkout" name="checkout" class="form-control">
-                                                    </div>
-                                                </div>
+                                               
                                                 <!--Grid column-->
 
                                             </div>
-                                            <input type="hidden" id="serviceType" value="Accommodation">
+                                            <input type="hidden" id="serviceType" value="Restaurant">
                                             <input type="hidden" id="cusId" value="<?php echo $_SESSION['id']?>">
                                              <br>
 
                                             
-                                                <span style="margin-left:240px"><a class="btn btn-info" id="accommodationCalculateBtn"
+                                                <span style="margin-left:240px"><a class="btn btn-info" id="restaurantCalculateBtn"
                                                 data-toggle="modal" data-target="#modalContactForm"
                                                 style="margin-left:220px">Calculate</a></span>
                                             
@@ -242,16 +242,16 @@ session_start();
                                         <td><span id="invoName">---</span></td>
                                         </tr>
                                         <tr>
+                                        <td><i class="fas fa-user"></i>Description</td>
+                                        <td><span id="invoDescription">---</span></td>
+                                        </tr>
+                                        <tr>
                                         <td><i class="fas fa-user"></i> Number of persons</td>
                                         <td><span id="invoNoOfPersons">---</span></td>
                                         </tr>
                                         <tr>
-                                        <td> <i class="fas fa-calendar"></i> Check In </td>
-                                        <td><span id="invoCheckIn">---</span></td>
-                                        </tr>
-                                        <tr>
-                                        <td> <i class="fas fa-calendar"></i> Check Out </td>
-                                        <td><span id="invoCheckOut">---</span></td>
+                                        <td> <i class="fas fa-calendar"></i> Date</td>
+                                        <td><span id="invoDate">---</span></td>
                                         </tr>
                                         <tr>
                                     </tbody>
@@ -260,7 +260,7 @@ session_start();
                                     <div class="row">
                                         <div style="margin-left:400px">
                                             <ul class="list-unstyled float-end me-0">
-                                                <li><span class="me-3 float-start">Charge per person:</span><i class="fas fa-dollar-sign" ></i> 2500.00
+                                                <li><span class="me-3 float-start">Charge per person:</span><i class="fas fa-dollar-sign" ></i> 1000.00
                                                 </li>
                                                 <li><span class="me-3 ">Discount:</span><i class="fas fa-dollar-sign" style="margin-left:60px"></i>-<?php echo $discount?>
                                                 </li>
@@ -277,7 +277,7 @@ session_start();
 
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button class="btn btn-success" id="accommodationBooking">Confirm Booking</button>
+                    <button class="btn btn-success" id="restaurantBooking">Confirm Booking</button>
                 </div>
                 </div>
             </div>

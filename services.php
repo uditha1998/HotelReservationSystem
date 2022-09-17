@@ -102,7 +102,7 @@ session_start();
                                 <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                                     <div>
                                         <h3 class="card-title pt-2" style="margin-left:60px; color:white; margin-top:60px">Restaurant</h3>
-                                        <a class="btn btn-primary" style="margin-left:60px"><i class="fas fa-clone left"></i>Click Here</a>
+                                        <a class="btn btn-primary" style="margin-left:60px" href="./book-restaurant.php"><i class="fas fa-clone left"></i>Click Here</a>
                                     </div>
                                 </div>
 
@@ -123,7 +123,7 @@ session_start();
                                 <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                                     <div>
                                         <h3 class="card-title pt-2" style="margin-left:60px; color:white; margin-top:60px">Tour Arrangment</h3>
-                                        <a class="btn btn-primary" ><i class="fas fa-clone left"></i>Click Here</a>
+                                        <a class="btn btn-primary" href="./book-tour.php"><i class="fas fa-clone left"></i>Click Here</a>
                                     </div>
                                 </div>
 
@@ -141,7 +141,7 @@ session_start();
                                 <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                                     <div>
                                         <h3 class="card-title pt-2" style="margin-left:60px; color:white; margin-top:60px">Event Organize</h3>
-                                        <a class="btn btn-primary" style="margin-left:10px"><i class="fas fa-clone left"></i>Click Here</a>
+                                        <a class="btn btn-primary" style="margin-left:10px" href="./book-event.php"><i class="fas fa-clone left"></i>Click Here</a>
                                     </div>
                                 </div>
 
