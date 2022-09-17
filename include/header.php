@@ -1,14 +1,24 @@
+
 <?php
+
+
 if(isset($_SESSION['id'])){
-   $logoutbtn = 'LogOut';
+
+   $profileBtn = 'Profile';
    $loginbtn = '';
    $registerbtn = '';
-}else{
-    $logoutbtn = '';
+
+}
+else{
+
+    $profileBtn = '';
     $loginbtn = 'Login';
     $registerbtn = 'register to claim special discounts';
+
 }
+
 ?>
+
 <!-- HEADER -->
 <header id="header">
 
@@ -23,9 +33,9 @@ if(isset($_SESSION['id'])){
         <div class="header_right float-right">
 
             <span class="login-register">
-                <a type="button" href="#" id="logout"><?php echo $logoutbtn?></a>
                 <a href="login.php"><?php echo $loginbtn?></a>
                 <a href="register.php"><?php echo $registerbtn?></a>
+                <a type="button" href="profile.php" ><?php echo $profileBtn?></a>
                 
             </span>
 

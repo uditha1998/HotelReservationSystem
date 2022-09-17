@@ -10,6 +10,8 @@ class Booking extends DBconnection {
     private $checkOut;
     private $createdAt;
     private $date;
+    private $package;
+    private $Description;
     private $quantity;
     private $status;
     private $customerId;
@@ -25,10 +27,12 @@ class Booking extends DBconnection {
 
         date_default_timezone_set('Asia/Colombo');
         $this->createdAt = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO `booking` (serviceType,checkIn,checkOut,date,quantity,customerId,customerName,customerEmail,customerTelephone)  VALUES  ('"
+        $sql = "INSERT INTO `booking` (serviceType,checkIn,checkout,description,package,date,quantity,customerId,customerName,customerEmail,customerTelephone)  VALUES  ('"
                 . $this->serviceType . "','"
                 . $this->checkIn . "','"
-                . $this->checkOut . "', '"
+                . $this->checkOut . "','"
+                . $this->Description . "', '"
+                . $this->package . "', '"
                 . $this->createdAt . "', '"
                 . $this->quantity . "', '"
                 . $this->customerId . "', '"
@@ -178,6 +182,10 @@ class Booking extends DBconnection {
         $this->status = $status;
     }
 
+    function setPackage($package) {
+        $this->package = $package;
+    }
+
     function setCustomerId($customerId) {
         $this->customerId = $customerId;
     }
@@ -192,6 +200,10 @@ class Booking extends DBconnection {
 
     function setCustomerTelephone($customerTelephone) {
         $this->customerTelephone = $customerTelephone;
+    }
+    
+    function setDescription($Description){
+        $this->Description = $Description;
     }
 
     // Getters
