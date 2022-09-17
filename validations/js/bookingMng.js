@@ -1,8 +1,9 @@
 $(document).ready(function () {
-            
+
+    
             $("#calculatebtn").click(function (event) {
-                event.preventDefault();
-                ;
+
+                
 
                 if (!$('#numberofpersons').val() || $('#numberofpersons').val().length === 0) {
                     swal({
@@ -33,6 +34,9 @@ $(document).ready(function () {
                 }
                 else{
 
+                        
+                    
+
                     var numberOfPersons = $('#numberofpersons').val();
                     var checkin = $('#checkin').val();
                     var checkout = $('#checkout').val();
@@ -52,8 +56,8 @@ $(document).ready(function () {
                     document.getElementById("invoCheckIn").innerHTML =$('#checkin').val();
                     document.getElementById("invoCheckOut").innerHTML =$('#checkout').val();
                     document.getElementById("invoTotal").innerHTML = total + '.00';
-                    document.getElementById("invoice").style.display = 'block';
-
+                    
+            
 
                 }
             });
@@ -145,6 +149,7 @@ $(document).ready(function () {
 
                                 });
                             } else if (result.status == "success") {
+
                                 swal({
                                     title: "Success!",
                                     text: "Booking Confirmed",

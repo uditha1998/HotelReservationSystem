@@ -1,309 +1,64 @@
-//DB Handeler
-
-//Private static final String TABLE_NAME="USER"
-
-//Insert Query
-//-------------------------------------
-2970730----------------------------------------------------------------
-
-public boolean addNews(String Heading, String description, String image,String Date) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("Heading", Heading);
-        contentValues.put("Description",description );
-        contentValues.put("Image",image );
-        contentValues.put("Date",date);
-       
- long result = db.insert(TABLE_NAME, null, contentValues);
-        if (result == -1)
-            return false;
-        else
-            return true;
-    }
-
-
-//Login
-//---------------------------------------------------------------------------------------------------------------------------------------
-
- public boolean login(String email, String password) {
-
-
-
-        SQLiteDatabase db = this.getReadableDatabase();
-        // array of columns to fetch
-        String[] columns = {
-               "Username",
-		   "password"
-        };
-
-        // selection criteria
-        String selection = ="username = ?" + " AND password = ?";
-        // selection arguments
-        String[] selectionArgs = {email, password};
-        // query user table with conditions
-2977030
-        Cursor cursor = db.query("User", //Table to query
-                columns,                    //columns to return
-                selection,                  //columns for the WHERE clause
-                selectionArgs,              //The values for the WHERE clause
-                null,                       //group the rows
-                null,                       //filter by row groups
-                null);                      //The sort order
-        int cursorCount = cursor.getCount();
-   
-        if (cursorCount > 0) {
-            return true;
-        }
-        return false;
-}
-
-
-
-public ArrayList<HashMap<String,String>> getMovies(){
-
-        SQLiteDatabase db=this.getReadableDatabase();
-        ArrayList<HashMap <String,String>> movielist=new ArrayList<>();
-        String query="SELECT * FROM users";
-        Cursor cursor=db.rawQuery(query,null);
-
-        while(cursor.moveToNext()){
-            HashMap<String,String> movies=new HashMap<>();
-            movies.put("Movie_name",cursor.getString(cursor.getColumnIndex(movie.MOVIE_NAME)));
-            movies.put("Movie_year",cursor.getString(cursor.getColumnIndex(movie.MOVIE_YEAR)));
-            movielist.add(movies);
-
-
-        }
-        return movielist;
-    }
-public ArrayList<HashMap<String,String>> getMovies(){
-
-        SQLiteDatabase db=this.getReadableDatabase();
-        ArrayList<HashMap <String,String>> movielist=new ArrayList<>();
-        String query="SELECT * FROM users";
-        Cursor cursor=db.rawQuery(query,null);
-
-        while(cursor.moveToNext()){
-            HashMap<String,String> movies=new HashMap<>();
-            movies.put("Movie_name",cursor.getString(cursor.getColumnIndex(movie.MOVIE_NAME)));
-            movies.put("Movie_year",cursor.getString(cursor.getColumnIndex(movie.MOVIE_YEAR)));
-            movielist.add(movies);
-
-
-        }
-        return movielist;
-    }
-
-public boolean updateData(String id,String name,String surname,String marks) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String selectionArgs[]={ id };
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_1,id);
-        contentValues.put(COL_2,name);
-        contentValues.put(COL_3,surname);
-        contentValues.put(COL_4,marks);
-        db.update(TABLE_NAME, contentValues, "ID = ?",selectionArgs);
-        return true;
-    }
-
-    public Integer deleteData (String id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String selectionArgs[]={ id };
-
-        return db.delete(TABLE_NAME, "ID = ?",selectionArgs);
-    }
--------------------------------------------------------------------------------------
-login
-
-        btn=(Button)findViewById(R.id.button);
-        userName=(EditText) findViewById(R.id.userName);
-        Password=(EditText) findViewById(R.id.Password);
-
-        Intent Adminintent=new Intent(this,AddMovie.class);
-        Intent Regularintent=new Intent(this,MovieList.class);
-
-  public void onClick(View view) {
-                DBHandler db=new DBHandler();
-                boolean result=db.login(userName.getText().toString(),Password.getText().toString());
-
-                if(result==true){
-
-                    if(userName.getText().toString().equals("admin")){
-                    startActivity(Adminintent);
-                    }else{
-                        startActivity(Regularintent);
-
-                    }
-
-                }else{
-                    Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
-                }
-
-                btn=(Button)findViewById(R.id.button2);
-                userName=(EditText) findViewById(R.id.userName);
-                Password=(EditText) findViewById(R.id.Password);
-
-
-
-
-              btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
----------------------------------------------------------------------------------------------
-                    public void onClick(View view) {
-
-                        boolean result=db.registerUser(userName.getText().toString(),Password.getText().toString());
-                        if(result==true){
-
-                            Toast.makeText(MainActivity.this, "Register successfully", Toast.LENGTH_SHORT).show();
-
-                        }else{
-                            Toast.makeText(MainActivity.this, "Register Failed", Toast.LENGTH_SHORT).show();
-                        }
-
-
-            }
-        });
-
-public void onClick(View view) {
-
-
-// Write your answer here
-DatabaseHandler db=new DatabaseHandler();
-Cursor cursor=db.getAllFarmerData(name.getText().toString);
-
-String buffer=new StringBuffer();
-while(cursor.moveToNext()){
-buffer.append("Farmer's Name:"+cursor.getString(0)+"\n")
-buffer.append("Farmer's Name:"+cursor.getString(1)+"\n")
-buffer.append("Farmer's Name:"+cursor.getString(2)+"\n")
-buffer.append("Farmer's Name:"+cursor.getString(3)+"\n")
-}
-
-                        showMessage("Myprofile",buffer.toString());
-                 
-
-    public void showMessage(String title,String Message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(Message);
-        builder.show();
-    }
-}
-Intent ViewNews=intent ( MenuActivity.this,ViewNews.class)
-ViewNews.putExtra("Farmers Name",FarmersName)
-
-
-//Seek Bar
-SeekBar sBar = (SeekBar) findViewById(R.id.seekBar1);
-      
- 
-        sBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int pval = 0;
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                pval = progress;
-            }
-          
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                tView.setText(pval + "/" + seekBar.getMax());
-            }
-        });
-
-//Rating Bar
-      RatingBar  rBar = (RatingBar) findViewById(R.id.ratingBar1);
-       
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int noofstars = rBar.getNumStars();
-                float getrating = rBar.getRating();
-                tView.setText("Rating: "+getrating+"/"+noofstars);
-            }
-        });
-
-//
-
-
-
-  ListView lv = (ListView) findViewById(R.id.user_list);
-        ListAdapter adapter = new SimpleAdapter(DetailsActivity.this, userList, R.layout.list_row,new String[]{"movieName","movieYear", new int[]{R.id.name, R.id.designation,});
-        lv.setAdapter(adapter);
-
-
-<string name="app_name">Model</string>
-    <string-array name="district">
-        <item>Kandy</item>
-        <item>Galle</item>
-        <item>Colombo</item>
-        <item>Matara</item>
-        <item>Hambanthota</item>
-
-
-    </string-array>
-protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_simple_spinner);
-
-        Spinner district = (Spinner)findViewById(R.id.spinner);
-
-        //Equal string resource array
-        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,
-        R.array.District,
-        android.R.layout.simple_spinner_item);
-
-        //Fetch data to the Dropdown List
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        district.setAdapter(adapter);
-
-
- radioGroup = (RadioGroup) findViewById(R.id.radio);
-    btnDisplay = (Button) findViewById(R.id.btnDisplay);
-
-    btnDisplay.setOnClickListener(new OnClickListener() {
-
-        @Override
-        public void onClick(View v) {
-
-                // get selected radio button from radioGroup
-            int selectedId = radioGroup.getCheckedRadioButtonId();
-
-            // find the radiobutton by returned id
-            radioButton = (RadioButton) findViewById(selectedId);
-
-            Toast.makeText(MyAndroidAppActivity.this,
-                radioButton.getText(), Toast.LENGTH_SHORT).show();
-
-        }
-
-    });
-
-  }
-
-
-  <?php
-                        include_once 'connect.php';
-                       
-                        if (isset($_POST['submit'])) {
-                            
-                            $name = $_POST['name'];
-                            $email = $_POST['email'];
-                            $phone = $_POST['phone'];
-                            $subject = $_POST['subject'];
-                            $message = $_POST['message'];
-                            $sql = "INSERT INTO inquires (user_id,name,email,phone,subject,message) VALUES ('5','$name','$email','$phone','$subject','$message')";
-                    
-                            if (mysqli_query($conn, $sql)) {
-                                echo("<script> window.alert('Inquiry sent sucessfully');</script>");
-                            } else {
-                                echo "Error: " . $sql . "
-                            " . mysqli_error($conn);
-                            }
-                            mysqli_close($conn);
-                        }
-                        ?>
-
+                        <div style="display:none;" id="invoice">
+
+                            <div class="col">
+                                       <div class="card" style="margin-top:40px; width:400px" >
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div>
+                                                    <i class="far fa-building text-danger fa-3x float-start"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="row text-center">
+                                                    <h3 class="text-uppercase text-center mt-3" style="font-size: 20px;">Invoice</h3>
+                                                    <p>123456789</p>
+                                                </div>
+                                                <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                    <td><i class="fas fa-user"></i>Name</td>
+                                                    <td><span id="invoName">---</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td><i class="fas fa-user"></i> Number of persons</td>
+                                                    <td><span id="invoNoOfPersons">---</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td> <i class="fas fa-calendar"></i> Check In </td>
+                                                    <td><span id="invoCheckIn">---</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td> <i class="fas fa-calendar"></i> Check Out </td>
+                                                    <td><span id="invoCheckOut">---</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                </tbody>
+                                                </table>
+
+                                                <div class="row">
+                                                    <div>
+                                                    <ul class="list-unstyled float-end me-0">
+                                                        <li><span class="me-3 float-start">Charge per person:</span><i class="fas fa-dollar-sign" ></i> 2500.00
+                                                        </li>
+                                                        <li><span class="me-3 ">Discount:</span><i class="fas fa-dollar-sign" style="margin-left:60px"></i>-<?php echo $discount?>
+                                                        </li>
+                                                        <hr>
+                                                         <li> <span class="me-5">Totoal Amount:</span><i class="fas fa-dollar-sign" ></i><span id="invoTotal">000</span><span>.00</span>
+                                                        </li>
+                                                    </ul>
+                                                    </div>
+                                                </div>
+                                                
+                                                 <span style="margin-left:50px"><a class="btn btn-success" id="booking">Confirm Booking</a></span>
+                                                
+                                            </div>
+                                       </div>
+
+                                    </div>
+
+                        </div>
