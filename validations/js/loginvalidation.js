@@ -31,18 +31,20 @@ $(document).ready(function () {
                         data: {email: email, password: password},
                         dataType: "json",
                         //if received a response from the server
-                        success: function (result) {
+                        success: function (results) {
 
-                            if (result.status == "fail") {
+                            if (results.status == "fail") {
                                 swal({
                                     title: "Error!",
-                                    text: "Username or Password Invalid..!",
+                                    text: "Email or password is incorrect..!",
                                     type: 'error',
                                     timer: 2000,
                                     showConfirmButton: true
 
                                 });
-                            } else if (result.status == "success") {
+                            } else if (results.status == "success") {
+
+                                if(results['isActive']==1){
                                 swal({
                                     title: "Success!",
                                     text: "Your Have Successfully Login",
@@ -54,6 +56,17 @@ $(document).ready(function () {
                                         window.location.replace("index.php");
                                     }, 2000);
                                 });
+                            }else if(results.status == "blocked"){
+                                swal({
+                                    title: "Error!",
+                                    text: "This is email is blocked",
+                                    type: 'error',
+                                    timer: 2000,
+                                    showConfirmButton: true
+
+                                });
+                            }
+
                             }
 
 
