@@ -7,6 +7,7 @@ session_start();
         $name = "";
         $email = "";
         $number = "";
+        $cusID = "";
 
     }
     else{
@@ -16,6 +17,7 @@ session_start();
         $name = $_SESSION['name'];
         $email = $_SESSION['email'];
         $number = $_SESSION['number'];
+        $cusID = $_SESSION['id'];
     }
 ?>
 <!DOCTYPE html>
@@ -180,7 +182,7 @@ session_start();
 
                                             </div>
                                             <input type="hidden" id="serviceType" value="Accommodation">
-                                            <input type="hidden" id="cusId" value="<?php echo $_SESSION['id']?>">
+                                            <input type="hidden" id="cusId" value="<?php echo $cusID?>">
                                              <br>
 
                                             
