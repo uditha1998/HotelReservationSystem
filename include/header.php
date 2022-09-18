@@ -1,7 +1,6 @@
 
 <?php
 
-
 if(isset($_SESSION['id'])){
 
    $profileBtn = 'Profile';
@@ -17,6 +16,24 @@ else{
 
 }
 
+$apiKey = "3165db4e8f07bee4f2d90aab6ae05729";
+$cityId = "1243936";
+$googleApiUrl = "https://api.openweathermap.org/data/2.5/weather?id=" . $cityId . "&lang=en&units=metric&APPID=" . $apiKey;
+
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt($ch, CURLOPT_VERBOSE, 0);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+$response = curl_exec($ch);
+
+curl_close($ch);
+$data = json_decode($response);
+$currentTime = time();
+
 ?>
 
 <!-- HEADER -->
@@ -24,11 +41,19 @@ else{
 
 <!-- HEADER TOP -->
 <div class="header_top">
-    <div class="container">
+    <div class="container-fluid">
         <div class="header_left float-left">
-            <span><i class="lotus-icon-cloud"></i> 18 °C</span>
-            <span><i class="lotus-icon-location"></i> 225 Beach Street, Australian</span>
-            <span><i class="lotus-icon-phone"></i> 1-548-854-8898</span>
+            <span><?php echo date("l g:i a", $currentTime); ?></span>
+            <span><?php echo date("jS F, Y",$currentTime); ?></span>
+            <span><?php echo ucwords($data->weather[0]->description); ?></span>
+
+            <span>Humidity: <?php echo $data->main->humidity; ?> %</span>
+            <span>Wind: <?php echo $data->wind->speed; ?> km/h</span>
+            <img src="https://openweathermap.org/img/w/<?php echo $data->weather[0]->icon; ?>.png"/>
+            <span><i class="lotus-icon-cloud"></i> <?php echo $data->main->temp_max; ?>°C</span>
+            <span><i class="lotus-icon-cloud"></i> <?php echo $data->main->temp_min; ?>°C</span>
+            <span><i class="lotus-icon-location"></i> 110 Awissawella Rd, <?php echo $data->name; ?></span>
+            <span><i class="lotus-icon-phone"></i> 11 2 151 582</span>
         </div>
         <div class="header_right float-right">
 
