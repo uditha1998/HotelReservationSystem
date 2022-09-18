@@ -1,6 +1,18 @@
 
 <?php
+include_once(dirname(__FILE__) . '/model/include.php');
+
 session_start();
+
+    if(!isset($_SESSION['id'])){
+        $id = "";
+    }
+    else{
+    $id = $_SESSION['id']; 
+    }
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -69,34 +81,50 @@ session_start();
 
         <!-- ACCOUNT -->
         <section class="section-account parallax bg-11" >
+                        <button type="button" class="btn btn-danger" style="margin-left:90vw" id="logout">Logout</button>
+
 <div style="margin-left:40vw;">
          <h2 style="margin-left:200px; margin-bottom:50px; color:white;">Profile</h2>
 
+
         <div class="container">
-        <form class="col-lg-6">
+
+        <div class="col-lg-6">
+
+        <?php
+                $Customer = new Customer();
+                $customer = $Customer->getterAllById($id);
+
+                    
+                    ?>
+                    <input type="hidden" id="id" value="<?= $customer['id'] ?>">
+            
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
-                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name"
+                value="<?php echo $customer['name']?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Email" readonly>
+                <input type="email" class="form-control" id="email" placeholder="Email" readonly
+                value="<?php echo $customer['email']?>">
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Residance</label>
-                <input type="text" class="form-control" id="residance" aria-describedby="emailHelp" placeholder="Residance">
+                <input type="text" class="form-control" id="residance" aria-describedby="emailHelp" placeholder="Residance"
+                value="<?php echo $customer['residance']?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Number</label>
-                <input type="text" class="form-control" id="number" placeholder="Number">
+                <input type="text" class="form-control" id="number" placeholder="Number"
+                value="<?php echo $customer['number']?>">
             </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <button type="button" class="btn btn-primary" id="update">Update</button>
             </div>
-            <button type="button" class="btn btn-primary">Update</button>
-            </form>
+            
+            
 </div>
 </div>
         </section>
@@ -246,8 +274,8 @@ session_start();
     <script type="text/javascript" src="js/login.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript" src="validations/js/loginvalidation.js"></script>
       <script src="include/plugin/sweetalert/sweetalert/sweetalert.min.js"></script>
+      <script type="text/javascript" src="validations/js/customer.js"></script>
 
     
 </body>
