@@ -50,9 +50,11 @@ $id = $_GET['id'];
 
                                         if($customer['isActive']==0){
                                             $blockbtn="Unblock";
+                                            $status ="<span style='color:red'>Blocked</span>";
                                         }
                                         else{
                                             $blockbtn="Block";
+                                            $status ="<span style='color:green'>Active</span>";
                                         }
                                         ?>
                                         <div class="form-group row">
@@ -94,7 +96,7 @@ $id = $_GET['id'];
                                         <div class="form-group row">
                                             <label for="staticStatus" class="col-sm-2 col-form-label">Status</label>
                                             <div class="col-sm-10">
-                                            <input type="text" readonly class="form-control-plaintext" id="status" value="<?= $customer['isActive'] ?>">
+                                            <span><?php echo $status ?></span>
                                             </div>
                                         </div>
 
