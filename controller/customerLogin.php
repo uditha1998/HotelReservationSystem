@@ -8,18 +8,32 @@ include_once '../model/Customer.php';
 
             $Customer->setLoginCredentials($email, $password);
 
-            if ($Customer->login()) {
+            $result = $Customer->login();
 
-                $result = ["status" => 'success'];
+            if ($result) {
 
-                echo json_encode($result);
+                if($Customer->getStatus()==1){
+
+                    $results = ["status" => 'success'];
+
+                    echo json_encode($results);
+
+                }
+                else{
+
+                    $results = ["status" => 'blocked'];
+
+                    echo json_encode($results);
+
+                }
 
 
-            } else {
+            } 
+            else{
+                
+                $results = ["status" => 'fail'];
 
-                $result = ["status" => 'fail'];
-
-                echo json_encode($result);
+                echo json_encode($results);
 
             }
 

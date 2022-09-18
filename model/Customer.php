@@ -301,6 +301,10 @@ class Customer extends DBconnection {
         return $this->userName;
     }
 
+    public function getStatus() {
+        return $this->isActive;
+    }
+
     public function getterAllById($id) {
 
         if ($id) {
