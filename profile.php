@@ -122,6 +122,7 @@ session_start();
                 value="<?php echo $customer['number']?>">
             </div>
             <button type="button" class="btn btn-primary" id="update">Update</button>
+            <span style="margin-left:23vw"><button type="button" class="btn btn-danger" id="delete">Delete Account</button></span>
             </div>
             
             

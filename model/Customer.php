@@ -22,14 +22,20 @@ class Customer extends DBconnection {
 
     public function create() {
 
-        date_default_timezone_set('Asia/Colombo');
-        $createdAt = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO `customer` (name,email,residance,number,createdAt,isActive,password)  VALUES  ('" .$this->name. "', '" .$this->email. "','" .$this->residance. "','" .$this->number. "', '" .$this->createdAt. "', '" . 1 . "', '" .$this->password. "')";
+        if(($this->checkByEmail($this->email)==FALSE)){
+        
+            date_default_timezone_set('Asia/Colombo');
+            $createdAt = date('Y-m-d H:i:s');
+            $sql = "INSERT INTO `customer` (name,email,residance,number,createdAt,isActive,password)  VALUES  ('" .$this->name. "', '" .$this->email. "','" .$this->residance. "','" .$this->number. "', '" .$this->createdAt. "', '" . 1 . "', '" .$this->password. "')";
 
-        if (mysqli_query($this->connection, $sql)) {
+            if (mysqli_query($this->connection, $sql)) {
 
-            return TRUE;
-        } else {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        }
+        else{
             return FALSE;
         }
     }
@@ -265,6 +271,8 @@ class Customer extends DBconnection {
     }
 
     public function deleteCustomer(){
+
+        $this->logOut();
         $sql = 'DELETE FROM `customer` WHERE id="' . $this->id . '"';
 
         return $query = mysqli_query($this->connection, $sql);
@@ -328,6 +336,24 @@ class Customer extends DBconnection {
             $this->resetCode = $result['resetcode'];
 
             return $result;
+        }
+    }
+
+    public function checkByEmail($email) {
+
+        if ($email) {
+
+            $sql = "SELECT * FROM `customer` WHERE `email`=" . $email;
+
+            $query = mysqli_query($this->connection, $sql);
+
+            if($query){
+                return TRUE;
+            }
+            else{
+                return FALSE;
+            }
+
         }
     }
 

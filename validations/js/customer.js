@@ -160,3 +160,74 @@ $("#update").click(function () {
 
 
     });
+
+    $("#delete").click(function () {
+
+        var id = $('#id').val();
+        swal({
+
+            title: "Are you sure?",
+
+            text: "This account will completely deleted",
+
+            type: "warning",
+
+            showCancelButton: true,
+
+            confirmButtonColor: "#DD6B55",
+
+            confirmButtonText: "Yes, Delete!",
+
+            closeOnConfirm: false
+
+        }, function () {
+
+
+            $.ajax({
+
+                url: "controller/customer.php",
+
+                type: "POST",
+
+                data: {option:'delete', id:id},
+
+                dataType: 'json',
+
+                success: function (result) {
+
+                    if (result.status == "fail") {
+                                swal({
+                                    title: "Error!",
+                                    text: "Fail to delete",
+                                    type: 'error',
+                                    timer: 2000,
+                                    showConfirmButton: true
+
+                                });
+                            } else if (result.status == "success") {
+                
+                    swal({
+                                    title: "Success!",
+                                    text: "Deleted successfully",
+                                    type: 'success',
+                                    timer: 2000,
+                                    showConfirmButton: false
+                                }, function () {
+
+                                setTimeout(function () {
+
+                                 window.location.replace("index.php");
+
+                        }, 500);
+
+                    });
+                            }
+
+                }
+
+            });
+
+        });
+
+
+    });

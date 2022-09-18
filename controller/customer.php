@@ -46,4 +46,29 @@ if ($_POST['option'] == 'logout') {
         echo json_encode($result);
     }
 }
+
+if ($_POST['option'] == 'delete') {
+
+    $Customer = new Customer();
+
+    $Customer->setId($_POST['id']);
+
+    $result = $Customer->deleteCustomer();
+
+    if($result){
+
+        $result = ["status" => "success"];
+
+        header('Content-type: application/json');
+
+        echo json_encode($result);
+    }
+    else{
+        $result = ["status" => "fail"];
+
+        header('Content-type: application/json');
+
+        echo json_encode($result);
+    }
+}
 ?>
