@@ -2,7 +2,7 @@
 
 include_once 'DBConnection.php';
 
-class Customer extends DBconnection {
+class Chat extends DBconnection {
 
     private $id;
     private $customer_id;
@@ -16,52 +16,62 @@ class Customer extends DBconnection {
     }
 
     public function create() {
-  
-            date_default_timezone_set('Asia/Colombo');
-            $this->sent_Time = date('Y-m-d H:i:s');
-            $sql = "INSERT INTO `customer` (customer_id,message,sent_time)  VALUES  ('" .$this->customer_id. "', '" .$this->message. "','" .$this->sent_time."')";
 
-            if (mysqli_query($this->connection, $sql)) {
+        date_default_timezone_set('Asia/Colombo');
+        $this->sent_Time = date('Y-m-d H:i:s');
+        $sql = "INSERT INTO `customer` (customer_id,message,sent_time,sent_by)  VALUES  ('" . $this->customer_id . "', '" . $this->message . "','" . $this->$send_by ."','" . $this->sent_time . "')";
 
-                return TRUE;
-            } else {
-                return FALSE;
-            }
-       
+        if (mysqli_query($this->connection, $sql)) {
+
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
-        public function getAllChats() {
-    
-    
-    
-            $sql = "SELECT * FROM `chat` ";
-    
-            $query = mysqli_query($this->connection, $sql);
-    
-            $array_res = array();
-            while ($row = $query->fetch_assoc()) {
-    
-                array_push($array_res, $row);
-            }
-            return $array_res;
-        }
 
-      public function getAllChatsByCustomer() {
-    
-    
-    
-            $sql = "SELECT * FROM `chat` where customer_id=".$this->customer_id;
-    
-            $query = mysqli_query($this->connection, $sql);
-    
-            $array_res = array();
-            while ($row = $query->fetch_assoc()) {
-    
-                array_push($array_res, $row);
-            }
-            return $array_res;
-        }
+    public function getAllChats() {
 
- 
+
+
+        $sql = "SELECT * FROM `chat` ";
+
+        $query = mysqli_query($this->connection, $sql);
+
+        $array_res = array();
+        while ($row = $query->fetch_assoc()) {
+
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+
+    public function getAllChatsByCustomer() {
+
+
+
+        $sql = "SELECT * FROM `chat` where customer_id=" . $this->customer_id;
+
+        $query = mysqli_query($this->connection, $sql);
+
+        $array_res = array();
+        while ($row = $query->fetch_assoc()) {
+
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+
+    function setCustomer_id($customer_id) {
+        $this->customer_id = $customer_id;
+    }
+
+    function getId() {
+        return $this->id;
+    }
+
+    function setMessage($message) {
+        $this->message = $message;
+    }
 
 }
 
