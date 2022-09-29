@@ -87,13 +87,14 @@ $(document).ready(function () {
                             if (result.status == "fail") {
                                 swal({
                                     title: "Error!",
-                                    text: "Error while Regitering",
+                                    text: "Error while Registering",
                                     type: 'error',
                                     timer: 2000,
                                     showConfirmButton: true
 
                                 });
-                            } else if (result.status == "success") {
+                            }
+                            else if (result.status == "success") {
                                 swal({
                                     title: "Success!",
                                     text: "Your Have Successfully Regsitered",
@@ -106,8 +107,6 @@ $(document).ready(function () {
                                     }, 2000);
                                 });
                             }
-
-
                         }
 
                     });

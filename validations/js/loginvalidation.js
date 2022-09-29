@@ -13,7 +13,8 @@ $(document).ready(function () {
                         timer: 2000,
                         showConfirmButton: true
                     });
-                } else if (!$('#password').val() || $('#password').val().length === 0) {
+                }
+                else if (!$('#password').val() || $('#password').val().length === 0) {
                     swal({
                         title: "Error!",
                         text: "Please enter Password..!",
@@ -21,7 +22,8 @@ $(document).ready(function () {
                         timer: 2000,
                         showConfirmButton: true
                     });
-                } else {
+                }
+                else {
                     var email = $('#email').val();
 
                     var password = $('#password').val()
@@ -36,15 +38,14 @@ $(document).ready(function () {
                             if (results.status == "fail") {
                                 swal({
                                     title: "Error!",
-                                    text: "Email or password is incorrect..!",
+                                    text: "Email or password is incorrect or email blocked..!",
                                     type: 'error',
                                     timer: 2000,
                                     showConfirmButton: true
 
                                 });
                             } else if (results.status == "success") {
-
-                                if(results['isActive']==1){
+         
                                 swal({
                                     title: "Success!",
                                     text: "Your Have Successfully Login",
@@ -56,16 +57,6 @@ $(document).ready(function () {
                                         window.location.replace("index.php");
                                     }, 2000);
                                 });
-                            }else if(results.status == "blocked"){
-                                swal({
-                                    title: "Error!",
-                                    text: "This is email is blocked",
-                                    type: 'error',
-                                    timer: 2000,
-                                    showConfirmButton: true
-
-                                });
-                            }
 
                             }
 

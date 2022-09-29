@@ -1,3 +1,4 @@
+
 <?php
 include_once '../model/Customer.php';
 
@@ -7,22 +8,34 @@ $residance = filter_var($_POST['residance'], FILTER_SANITIZE_STRING);
 $number = filter_var($_POST['number'], FILTER_SANITIZE_STRING);
 $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
+
 $Customer = new Customer();
 
-$Customer->setSigninDetails($name,$email,$residance,$number,$password);
 
-if ($Customer->create()) {
+    if(!$Customer->checkByEmail($email)){
 
-    $result = ["status" => 'success'];
+        $Customer->setSigninDetails($name,$email,$residance,$number,$password);
 
-    echo json_encode($result);
+        if ($Customer->create()) {
+
+            $result = ["status" => 'success'];
+
+            echo json_encode($result);
 
 
-} else {
+        } else {
 
-    $result = ["status" => 'fail'];
+            $result = ["status" => 'fail'];
 
-    echo json_encode($result);
+            echo json_encode($result);
 
-}
+        }
+    }
+    else{
+
+        $result = ["status" => 'fail'];
+
+        echo json_encode($result);
+
+    }
 ?>
