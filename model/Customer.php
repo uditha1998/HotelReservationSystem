@@ -43,23 +43,24 @@ class Customer extends DBconnection {
     public function Login() {
 
 
-        $sql = "SELECT id FROM customer WHERE email = '$this->email' AND password = '$this->password'";
-        $query = mysqli_query($this->connection, $sql);
-        $result = $query->fetch_assoc();
+            $sql = "SELECT id FROM customer WHERE email = '$this->email' AND password = '$this->password'";
+            $query = mysqli_query($this->connection, $sql);
+            $result = $query->fetch_assoc();
 
-        //  echo $id;
-        if (mysqli_num_rows($query) > 0) {
+            //  echo $id;
+            if (mysqli_num_rows($query) > 0) {
 
-            $this->id = $result['id'];
-            $this->setAuthToken($result['id']);
-            $this->setLastLogin($this->id);
-            $user = $this->getterAllById($this->id);
-            $this->setUserSession($user);
-            return $user;
-        } else {
+                $this->id = $result['id'];
+                $this->setAuthToken($result['id']);
+                $this->setLastLogin($this->id);
+                $user = $this->getterAllById($this->id);
+                $this->setUserSession($user);
+                return $user;
+            } else {
 
-            return FALSE;
-        }
+                return FALSE;
+            }
+
     }
 
     private function setAuthToken($id) {
@@ -278,6 +279,19 @@ class Customer extends DBconnection {
         return $query = mysqli_query($this->connection, $sql);
     }
 
+    public function checkCustomerStatus($email){
+
+        if ($email) {
+
+            $sql = "SELECT isActive FROM `customer` WHERE `email`=" . $email;
+
+            $query = mysqli_query($this->connection, $sql);
+
+            
+        }
+
+    }
+
 
     //Setters
 
@@ -343,11 +357,12 @@ class Customer extends DBconnection {
 
         if ($email) {
 
-            $sql = "SELECT * FROM `customer` WHERE `email`=" . $email;
+            $sql = "SELECT id FROM customer WHERE email = '$email'";
 
             $query = mysqli_query($this->connection, $sql);
+            $result = $query->fetch_assoc();
 
-            if($query){
+            if(mysqli_num_rows($query) > 0){
                 return TRUE;
             }
             else{
@@ -355,6 +370,7 @@ class Customer extends DBconnection {
             }
 
         }
+
     }
 
     public function getAllCustomers() {

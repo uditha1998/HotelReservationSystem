@@ -28,7 +28,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <!-- TITLE -->
-    <title>Contact</title>
+    <title>Book-Accommodation</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
@@ -258,6 +258,7 @@ session_start();
                                         <tr>
                                     </tbody>
                                     </table>
+                                    <input type="hidden" id="total" >
 
                                     <div class="row">
                                         <div style="margin-left:400px">

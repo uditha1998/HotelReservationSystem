@@ -7,6 +7,7 @@ session_start();
         $name = "";
         $email = "";
         $number = "";
+        $id = "";
 
     }
     else{
@@ -16,6 +17,8 @@ session_start();
         $name = $_SESSION['name'];
         $email = $_SESSION['email'];
         $number = $_SESSION['number'];
+        $id = $_SESSION['id'];
+
     }
 ?>
 <!DOCTYPE html>
@@ -26,7 +29,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <!-- TITLE -->
-    <title>Contact</title>
+    <title>Book-Restaurant</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
@@ -180,7 +183,7 @@ session_start();
 
                                             </div>
                                             <input type="hidden" id="serviceType" value="Restaurant">
-                                            <input type="hidden" id="cusId" value="<?php echo $_SESSION['id']?>">
+                                            <input type="hidden" id="cusId" value="<?php echo $id?>">
                                              <br>
 
                                             
@@ -257,11 +260,15 @@ session_start();
                                     </tbody>
                                     </table>
 
+                                    <input type="hidden" id="total" >
+
+
                                     <div class="row">
                                         <div style="margin-left:400px">
                                             <ul class="list-unstyled float-end me-0">
                                                 <li><span class="me-3 float-start">Charge per person:</span><i class="fas fa-dollar-sign" ></i> 1000.00
                                                 </li>
+                                                
                                                 <li><span class="me-3 ">Discount:</span><i class="fas fa-dollar-sign" style="margin-left:60px"></i>-<?php echo $discount?>
                                                 </li>
                                                 <hr>

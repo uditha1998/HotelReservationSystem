@@ -104,7 +104,7 @@
                                 <div class="mailchimp-form">
                                     <form action="#" method="POST">
                                         <input type="text" name="email" placeholder="Your email address" class="input-text">
-                                        <button class="awe-btn">SIGN UP</button>
+                                        <button class="awe-btn" href="register.php">SIGN UP</button>
                                     </form>
                                 </div>
                             </div>

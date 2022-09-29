@@ -1,0 +1,44 @@
+<div style="margin-left:40vw;">
+         <h2 style="margin-left:200px; margin-bottom:50px; color:white;">Profile</h2>
+
+
+        <div class="container">
+
+        <div class="col-lg-6">
+
+        <?php
+                $Customer = new Customer();
+                $customer = $Customer->getterAllById($id);
+
+                    
+                    ?>
+                    <input type="hidden" id="id" value="<?= $customer['id'] ?>">
+            
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name"
+                value="<?php echo $customer['name']?>">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" readonly
+                value="<?php echo $customer['email']?>">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Residance</label>
+                <input type="text" class="form-control" id="residance" aria-describedby="emailHelp" placeholder="Residance"
+                value="<?php echo $customer['residance']?>">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Number</label>
+                <input type="text" class="form-control" id="number" placeholder="Number"
+                value="<?php echo $customer['number']?>">
+            </div>
+            <button type="button" class="btn btn-primary" id="update">Update</button>
+            <span style="margin-left:23vw"><button type="button" class="btn btn-danger" id="delete">Delete Account</button></span>
+            </div>
+            
+            
+</div>

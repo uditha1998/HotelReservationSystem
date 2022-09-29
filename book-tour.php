@@ -7,6 +7,7 @@ session_start();
         $name = "";
         $email = "";
         $number = "";
+        $id = '';
 
     }
     else{
@@ -16,6 +17,7 @@ session_start();
         $name = $_SESSION['name'];
         $email = $_SESSION['email'];
         $number = $_SESSION['number'];
+        $id = $_SESSION['id'];
     }
 ?>
 <!DOCTYPE html>
@@ -26,7 +28,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <!-- TITLE -->
-    <title>Contact</title>
+    <title>Book-Tour</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
@@ -66,7 +68,7 @@ session_start();
             <div class="sub-banner">
                 <div class="container">
                     <div class="text text-center">
-                        <h2>Book Restaurant</h2>
+                        <h2>Book Tour</h2>
                     </div>
                 </div>
 
@@ -188,7 +190,7 @@ session_start();
 
                                             </div>
                                             <input type="hidden" id="serviceType" value="Tour">
-                                            <input type="hidden" id="cusId" value="<?php echo $_SESSION['id']?>">
+                                            <input type="hidden" id="cusId" value="<?php echo $id?>">
                                              <br>
 
                                             
@@ -268,11 +270,16 @@ session_start();
                                         <tr>
                                     </tbody>
                                     </table>
+                                    
+                                    <input type="hidden" id="total" >
+
 
                                     <div class="row">
                                         <div style="margin-left:400px">
                                             <ul class="list-unstyled float-end me-0">
                                                 <li><span class="me-3 float-start">Charge per person:</span><i class="fas fa-dollar-sign" ></i> <span id="charge"></span>
+                                                </li>
+                                                <li><span class="me-3 float-start">Number of persons:</span><i class="fas fa-dollar-sign" ></i> <span id="invoNoOfPersons"></span>
                                                 </li>
                                                 <li><span class="me-3 ">Discount:</span><i class="fas fa-dollar-sign" style="margin-left:60px"></i>-<?php echo $discount?>
                                                 </li>

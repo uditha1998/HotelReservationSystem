@@ -24,7 +24,7 @@ session_start();
     <meta charset="utf-8">
     <!-- TITLE -->
 
-    <title>Login</title>
+    <title>Profile</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
@@ -76,59 +76,78 @@ session_start();
         ?>
         <!-- END / HEADER -->
         
-                       
-                    
+                      
 
         <!-- ACCOUNT -->
         <section class="section-account parallax bg-11" >
-                        <button type="button" class="btn btn-danger" style="margin-left:90vw" id="logout">Logout</button>
 
-<div style="margin-left:40vw;">
-         <h2 style="margin-left:200px; margin-bottom:50px; color:white;">Profile</h2>
+        <button type="button" class="btn btn-danger" style="margin-left:90vw" id="logout">Logout</button>
 
+     <!-- Tabs navs -->
+<ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a
+      class="nav-link active"
+      id="ex1-tab-1"
+      data-mdb-toggle="tab"
+      href="#ex1-tabs-1"
+      role="tab"
+      aria-controls="ex1-tabs-1"
+      aria-selected="true"
+      >Tab 1</a
+    >
+  </li>
+  <li class="nav-item" role="presentation">
+    <a
+      class="nav-link"
+      id="ex1-tab-2"
+      data-mdb-toggle="tab"
+      href="#ex1-tabs-2"
+      role="tab"
+      aria-controls="ex1-tabs-2"
+      aria-selected="false"
+      >Tab 2</a
+    >
+  </li>
+  <li class="nav-item" role="presentation">
+    <a
+      class="nav-link"
+      id="ex1-tab-3"
+      data-mdb-toggle="tab"
+      href="#ex1-tabs-3"
+      role="tab"
+      aria-controls="ex1-tabs-3"
+      aria-selected="false"
+      >Tab 3</a
+    >
+  </li>
+</ul>
+<!-- Tabs navs -->
 
-        <div class="container">
-
-        <div class="col-lg-6">
-
-        <?php
-                $Customer = new Customer();
-                $customer = $Customer->getterAllById($id);
-
-                    
-                    ?>
-                    <input type="hidden" id="id" value="<?= $customer['id'] ?>">
-            
-
-            <div class="form-group">
-                <label for="exampleInputEmail1">Name</label>
-                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name"
-                value="<?php echo $customer['name']?>">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Email" readonly
-                value="<?php echo $customer['email']?>">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputEmail1">Residance</label>
-                <input type="text" class="form-control" id="residance" aria-describedby="emailHelp" placeholder="Residance"
-                value="<?php echo $customer['residance']?>">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Number</label>
-                <input type="text" class="form-control" id="number" placeholder="Number"
-                value="<?php echo $customer['number']?>">
-            </div>
-            <button type="button" class="btn btn-primary" id="update">Update</button>
-            <span style="margin-left:23vw"><button type="button" class="btn btn-danger" id="delete">Delete Account</button></span>
-            </div>
-            
-            
+<!-- Tabs content -->
+<div class="tab-content" id="ex1-content">
+  <div
+    class="tab-pane fade show active"
+    id="ex1-tabs-1"
+    role="tabpanel"
+    aria-labelledby="ex1-tab-1"
+  >
+    Tab 1 content
+  </div>
+  <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+    Tab 2 content
+  </div>
+  <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+    Tab 3 content
+  </div>
 </div>
-</div>
+<!-- Tabs content -->
+
+                
+
         </section>
+
+        </div>
         <!-- END / ACCOUNT -->
 
 

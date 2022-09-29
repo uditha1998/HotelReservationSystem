@@ -18,6 +18,7 @@ class Booking extends DBconnection {
     private $customerName;
     private $customerEmail;
     private $customerTelephone;
+    private $total;    
 
     public function __construct() {
         parent::__construct();
@@ -27,7 +28,7 @@ class Booking extends DBconnection {
 
         date_default_timezone_set('Asia/Colombo');
         $this->createdAt = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO `booking` (serviceType,checkIn,checkout,description,package,date,quantity,customerId,customerName,customerEmail,customerTelephone)  VALUES  ('"
+        $sql = "INSERT INTO `booking` (serviceType,checkIn,checkout,description,package,date,quantity,customerId,customerName,customerEmail,customerTelephone,total)  VALUES  ('"
                 . $this->serviceType . "','"
                 . $this->checkIn . "','"
                 . $this->checkOut . "','"
@@ -38,7 +39,8 @@ class Booking extends DBconnection {
                 . $this->customerId . "', '"
                 . $this->customerName . "', '"
                 . $this->customerEmail . "', '"
-                . $this->customerTelephone . "')";
+                . $this->customerTelephone . "','"
+                . $this->total ."')";
 
         if (mysqli_query($this->connection, $sql)) {
 
@@ -204,6 +206,9 @@ class Booking extends DBconnection {
     
     function setDescription($Description){
         $this->Description = $Description;
+    }
+    function setTotal($total){
+        $this->total = $total;
     }
 
     // Getters
