@@ -99,7 +99,7 @@ include_once(dirname(__FILE__) . '../../model/include.php');
                                     <div class="py-2 px-4 border-bottom d-none d-lg-block" style="background-color: #3b7ddd;">
                                         <div class="d-flex align-items-center py-1">
                                             <div class="position-relative">
-                                                <img src="img/avatars/avatar-6.jpg" class="rounded-circle me-1" alt="Kathie Burton" width="40" height="40">
+                                                <img src="img/avatars/avatar-3.jpg" class="rounded-circle me-1" alt="Kathie Burton" width="40" height="40">
                                             </div>
                                             <div class="flex-grow-1 ps-3">
                                                 <strong style="color: #fff">Agent</strong>
@@ -116,6 +116,14 @@ include_once(dirname(__FILE__) . '../../model/include.php');
                                         <div class="chat-messages p-4" id="chat-messagesssss">
 
                                             <div class="chat-message-left pb-4">
+                                                
+                                                 <?php
+                                        $CHAT = new Chat();
+                                        $CHAT->setCustomer_id(1);
+                                        $result = $CHAT->getAllChatsByCustomer();
+                                        foreach ($result as $chat) {
+                                            if (count($chat) == 0) {
+                                                ?>
                                                 <div>
                                                     <img src="img/avatars/avatar-6.jpg" class="rounded-circle me-1" alt="Chris Wood" width="40" height="40">
                                                     <div class="text-muted small text-nowrap mt-2">2:33 am</div>
@@ -123,15 +131,26 @@ include_once(dirname(__FILE__) . '../../model/include.php');
                                                 <div class="flex-shrink-1 bg-light rounded py-2 px-3 me-3 ml-5 chat-style-fix width-60" >
                                                     <div > Hi...!Tell Me How can i help you!i will fix it up For You!</div>
                                                 </div>
+                                            
+                                            
+                                            <?php
+                                            }
+                                        }
+                                            
+                                            ?>
                                             </div>
 
                                         </div>
+                                        
+                                        
+                                        
+                                        
                                     </div>
 
                                     <div class="flex-grow-0 py-3 px-4 border-top">
                                         <div class="input-group">
-                                            <input type="hidden" id="customer_id" value="<%=customer_id%>">
-                                            <input type="hidden" id="agent_random_id" value="<%=agent_id%>">
+                                            <input type="hidden" id="customer_id" value="1">
+                                            <input type="hidden" id="agent_random_id" value="1">
                                             <input type="hidden" id="send_by" value="0">
                                             <input type="text" id="message_chat" class="form-control" placeholder="Type your message">
                                             <button class="btn btn-primary" onclick="sendMsg()">Send</button>
@@ -214,7 +233,7 @@ include_once(dirname(__FILE__) . '../../model/include.php');
                                                                         var date = new Date(value['sent_time']);
                                                                         var min = today.getTime() - date.getTime();
                                                                         var time = (msToTime(min));
-                                                                        if (value['send_by'] === 0) {
+                                                                        if (value['send_by'] == 0) {
 
 
                                                                             html += "<div class='chat-message-right pb-4'>"
@@ -258,6 +277,51 @@ include_once(dirname(__FILE__) . '../../model/include.php');
                                                 });
 
 
+    </script>
+    <script>
+        //Send Message AJAX
+        function sendMsg() {
+
+            //get the form data using another method 
+            var customer_id = $("#customer_id").val();
+            var message = $("#message_chat").val();
+            var send_by = $("#send_by").val();
+            $("#message_chat").val('');
+
+            if (customer_id == 0) {
+                swal({
+                    title: "Error!",
+                    text: "You need to Login To Sent Messages!",
+                    type: 'error',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "controller/chat.php",
+                    data: {customer_id: customer_id, message: message, send_by: send_by,action: "send-message"},
+                    dataType: "json",
+                    //if received a response from the server
+                    success: function (result) {
+                        if (result.status == "fail") {
+                            swal({
+                                title: "Error!",
+                                text: "Message Was Not Sent..!",
+                                type: 'error',
+                                timer: 1500,
+                                showConfirmButton: false
+
+                            });
+                        }
+
+                    }
+
+                });
+            }
+
+        }
     </script>
     <script src="assets/libs/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js" integrity="sha512-MqEDqB7me8klOYxXXQlB4LaNf9V9S0+sG1i8LtPOYmHqICuEZ9ZLbyV3qIfADg2UJcLyCm4fawNiFvnYbcBJ1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

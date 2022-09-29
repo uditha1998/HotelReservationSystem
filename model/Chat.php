@@ -19,7 +19,7 @@ class Chat extends DBconnection {
 
         date_default_timezone_set('Asia/Colombo');
         $this->sent_Time = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO `customer` (customer_id,message,sent_time,sent_by)  VALUES  ('" . $this->customer_id . "', '" . $this->message . "','" . $this->$send_by ."','" . $this->sent_time . "')";
+        $sql = "INSERT INTO `chat` (`customer_id`,`message`, `send_by`) VALUES  ('" . $this->customer_id . "', '" . $this->message . "', '"  . $this->send_by. "')";
 
         if (mysqli_query($this->connection, $sql)) {
 
@@ -73,6 +73,10 @@ class Chat extends DBconnection {
         $this->message = $message;
     }
 
-}
+    function setSend_by($send_by) {
+        $this->send_by = $send_by;
+    }
+
+}   
 
 ?>
