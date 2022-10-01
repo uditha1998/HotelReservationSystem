@@ -90,30 +90,17 @@ class Booking extends DBconnection {
 
         if ($id) {
 
-            $sql = "SELECT * FROM `booking` WHERE `id`=" . $id;
+            $sql = "SELECT * FROM `booking` WHERE `customerId`=" . $id;
 
             $query = mysqli_query($this->connection, $sql);
 
-            $result = $query->fetch_assoc();
+            $array_res = array();
+            while ($row = $query->fetch_assoc()) {
 
+                array_push($array_res, $row);
+            }
+            return $array_res;
 
-            $this->id = $result['id'];
-            $this->checkIn = $result['checkIn'];
-            $this->checkOut = $result['checkOut'];
-            $this->date = $result['date'];
-            $this->quantity = $result['quantity'];
-            $this->serviceType = $result['serviceType'];
-            $this->status = $result['status'];
-            $this->customerName = $result['customerName'];
-            $this->customerEmail = $result['customerEmail'];
-
-
-
-
-
-
-
-            return $result;
         }
     }
     public function update() {
@@ -152,6 +139,20 @@ class Booking extends DBconnection {
             array_push($array_res, $row);
         }
         return $array_res;
+    }
+
+    function getTotalAmount($id){
+
+        $sql = "SELECT SUM(total) AS total FROM `booking` WHERE `customerId`=" . $id;
+
+        
+
+        $result = mysqli_query($this->connection, $sql); 
+        $row = mysqli_fetch_assoc($result); 
+        $sum = $row['total'];
+
+return $sum;
+
     }
 
     //Setters
@@ -257,6 +258,8 @@ class Booking extends DBconnection {
     function getCustomerTelephone() {
         return $this->customerTelephone;
     }
+
+    
 
 
 

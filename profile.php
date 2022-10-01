@@ -82,66 +82,130 @@ session_start();
         <section class="section-account parallax bg-11" >
 
         <button type="button" class="btn btn-danger" style="margin-left:90vw" id="logout">Logout</button>
+        <a href="bookings-report.php">Report</a>
 
-     <!-- Tabs navs -->
-<ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
-  <li class="nav-item" role="presentation">
-    <a
-      class="nav-link active"
-      id="ex1-tab-1"
-      data-mdb-toggle="tab"
-      href="#ex1-tabs-1"
-      role="tab"
-      aria-controls="ex1-tabs-1"
-      aria-selected="true"
-      >Tab 1</a
-    >
-  </li>
-  <li class="nav-item" role="presentation">
-    <a
-      class="nav-link"
-      id="ex1-tab-2"
-      data-mdb-toggle="tab"
-      href="#ex1-tabs-2"
-      role="tab"
-      aria-controls="ex1-tabs-2"
-      aria-selected="false"
-      >Tab 2</a
-    >
-  </li>
-  <li class="nav-item" role="presentation">
-    <a
-      class="nav-link"
-      id="ex1-tab-3"
-      data-mdb-toggle="tab"
-      href="#ex1-tabs-3"
-      role="tab"
-      aria-controls="ex1-tabs-3"
-      aria-selected="false"
-      >Tab 3</a
-    >
-  </li>
-</ul>
-<!-- Tabs navs -->
+    <ul class="nav nav-tabs" style="width:50vw; margin-left:30vw">
+    <li class="active"><a data-toggle="tab" href="#home">Your Bookings</a></li>
+    <li><a data-toggle="tab" href="#menu1">Profile</a></li>
+  </ul>
 
-<!-- Tabs content -->
-<div class="tab-content" id="ex1-content">
-  <div
-    class="tab-pane fade show active"
-    id="ex1-tabs-1"
-    role="tabpanel"
-    aria-labelledby="ex1-tab-1"
-  >
-    Tab 1 content
-  </div>
-  <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-    Tab 2 content
-  </div>
-  <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
-    Tab 3 content
+   <div class="tab-content" style="margin-left:30vw; margin-top:20px">
+    <div id="home" class="tab-pane fade in active">
+
+    <?php
+        $Bookings = new Booking();
+        foreach ($Bookings->getterAllById($_SESSION['id']) as $bookings) {
+            ?>
+
+      <div class="container">
+    
+        <?php
+        if($bookings['serviceType']=="Accommodation"){
+            $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663142955/WilludaInn/vojtech-bruzek-Yrxr3bsPdS0-unsplash_vjrofl.jpg";
+
+            $body = $bookings['date'];
+        }
+        else if($bookings['serviceType']=="Restaurant"){
+            $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663142899/WilludaInn/judith-girard-marczak-26Tp__tUAWc-unsplash_gx7n8z.jpg";
+            $body = $bookings['description'];
+        }
+        else if($bookings['serviceType']=="Tour"){
+            $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663143025/WilludaInn/andy-holmes-0LJCEORiYg8-unsplash_nizm7c.jpg";
+            $body = $bookings['description'];
+        }
+        else if($bookings['serviceType']=="Event"){
+            $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663143045/WilludaInn/samantha-gades-fIHozNWfcvs-unsplash_l6xerk.jpg";
+            $body = $bookings['description'];
+        }
+        ?>
+             <div class="card mb-3" style="max-width: 540px; background-color:#dbdbe9; margin-top:5px; margin-bottom:5px;border-radius:10px" >
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img
+                            src=<?php echo $imgUrl ?>
+                            alt="Trendy Pants and Shoes"
+                            class="img-fluid rounded-start"
+                            style="width: 150px; height: 150px;"
+                        />
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card-body">
+                            <h5 class="card-title" style="margin-top:20px;"><?php echo $bookings['serviceType'] ?></h5>
+                            <p class="card-text">
+                            <?php echo $body ?>
+                            </p>
+                            <p><?php echo $bookings['total']?></p>
+                            <p class="card-text" style="margin-top:20px;">
+                        <a href="#" class="btn btn-primary">View</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <?php
+
+                        if($bookings['description']==null){
+                            echo '<a href="#" class="btn btn-info" style="margin-top:50px">Add review</a></p>';
+                        }
+                        else{
+                            echo $bookings['description'];
+                        }
+
+                        ?>
+                    </div>
+                </div>
+                </div>
+           
+
+
+      </div>
+      <?php } ?>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <div style="margin-left:5vw;">
+
+        <div class="container">
+
+        <div class="col-lg-6">
+
+        <?php
+                $Customer = new Customer();
+                $customer = $Customer->getterAllById($id);
+
+                    
+                    ?>
+                    <input type="hidden" id="id" value="<?= $customer['id'] ?>">
+            
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name"
+                value="<?php echo $customer['name']?>">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" readonly
+                value="<?php echo $customer['email']?>">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Residance</label>
+                <input type="text" class="form-control" id="residance" aria-describedby="emailHelp" placeholder="Residance"
+                value="<?php echo $customer['residance']?>">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Number</label>
+                <input type="text" class="form-control" id="number" placeholder="Number"
+                value="<?php echo $customer['number']?>">
+            </div>
+            <button type="button" class="btn btn-primary" id="update">Update</button>
+            <span style="margin-left:23vw"><button type="button" class="btn btn-danger" id="delete">Delete Account</button></span>
+            </div>
+            
+            
+</div>
+    </div>
+    
   </div>
 </div>
-<!-- Tabs content -->
 
                 
 
