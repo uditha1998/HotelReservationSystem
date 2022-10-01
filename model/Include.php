@@ -9,6 +9,8 @@ include_once(dirname(__FILE__) . '/Inquiries.php');
 include_once(dirname(__FILE__) . '/Customer.php');
 include_once(dirname(__FILE__) . '/Chat.php');
 
+include_once(dirname(__FILE__) . '/Booking.php');
+
 
 include_once(dirname(__FILE__) . '/Helper.php');
 
