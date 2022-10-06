@@ -21,7 +21,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <!-- TITLE -->
-    <title>Profile</title>
+    <title>Booking</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
@@ -96,7 +96,7 @@ session_start();
             <div class="sub-banner">
                 <div class="container">
                     <div class="text text-center">
-                        <h2>Profile</h2>
+                        <h2>Booking</h2>
                         
                     </div>
                 </div>
@@ -114,16 +114,16 @@ session_start();
 
                     <div class="tabs tabs-restaurant">
 
-                        <div class="icon-restaurant text-center"><i class="fa fa-user" aria-hidden="true"></i></div>
-                        <button type="button" class="btn btn-danger" style="margin-left:75vw;" id="logout">Logout</button>
-
+                        <div class="icon-restaurant text-center"><i class="fa fa-university" aria-hidden="true"></i></div>
                         <ul>
                             <li><a href="#tabs-1">Your Bookings </a></li>
-                            <li><a href="#tabs-2">Profile</a></li>
+                            <li><a href="#tabs-2">Book a Service</a></li>
                             
                         </ul>
 
                                 <div id="tabs-1">
+                        <?php
+                                if($id){?>
                                     
                                    <span class="badge badge-pill badge-success"><a href="bookings-report.php">Genarate a Bookings Report</a></span>
     
@@ -241,45 +241,99 @@ session_start();
 
                                                 </div>
                                     <?php } ?>
+
+                                                     <?php       }else{
+                                                        echo '<h2>Your have no Bookings</h2>';
+                                                        }?>
                                     
                                     </div>
 
                                 
 
                                 <div id="tabs-2">
-                                    <br><br>
-                                    <?php
-                $Customer = new Customer();
-                $customer = $Customer->getterAllById($id);
+                                  <section class="section-contact">
+            <div class="container">
+                <div class="contact">
+                    <div class="row">
 
-                    
-                    ?>
-                    <input type="hidden" id="id" value="<?= $customer['id'] ?>">
-            
+                        <div class="col-md-6 col-lg-6" >
 
-            <div class="form-group">
-                <label for="exampleInputEmail1">Name</label>
-                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name"
-                value="<?php echo $customer['name']?>">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Email" readonly
-                value="<?php echo $customer['email']?>">
-            </div>
+                            <div class="card card-image"
+                                style="background-image: url(https://res.cloudinary.com/cake-lounge/image/upload/v1663142955/WilludaInn/vojtech-bruzek-Yrxr3bsPdS0-unsplash_vjrofl.jpg);">
 
-            <div class="form-group">
-                <label for="exampleInputEmail1">Residance</label>
-                <input type="text" class="form-control" id="residance" aria-describedby="emailHelp" placeholder="Residance"
-                value="<?php echo $customer['residance']?>">
+                                <!-- Content -->
+                                <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4" style="height:130px">
+                                    <div>
+                                        <h3 class="card-title pt-2" style="margin-left:60px; color:black; margin-top:60px">Accommodation</h3>
+                                        <a class="btn btn-primary" href="./book-accommodation.php"><i class="fas fa-clone left"></i>Click Here</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6 col-lg-6 ">
+                            
+                            <div class="card card-image"
+                                style="background-image: url(https://res.cloudinary.com/cake-lounge/image/upload/v1663142899/WilludaInn/judith-girard-marczak-26Tp__tUAWc-unsplash_gx7n8z.jpg);">
+
+                                <!-- Content -->
+                                <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4" style="height:130px">
+                                    <div>
+                                        <h3 class="card-title pt-2" style="margin-left:60px; color:black; margin-top:60px">Restaurant</h3>
+                                        <a class="btn btn-primary" style="margin-left:60px" href="./book-restaurant.php"><i class="fas fa-clone left"></i>Click Here</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row" style="margin-top:50px">
+
+                        <div class="col-md-6 col-lg-6">
+
+                            <div class="card card-image"
+                                style="background-image: url(https://res.cloudinary.com/cake-lounge/image/upload/v1663143025/WilludaInn/andy-holmes-0LJCEORiYg8-unsplash_nizm7c.jpg);">
+
+                                <!-- Content -->
+                                <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4" style="height:130px">
+                                    <div>
+                                        <h3 class="card-title pt-2" style="margin-left:60px; color:black; margin-top:60px">Tour Arrangment</h3>
+                                        <a class="btn btn-primary" href="./book-tour.php"><i class="fas fa-clone left"></i>Click Here</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6 col-lg-6">
+                            
+                            <div class="card card-image"
+                                style="background-image: url(https://res.cloudinary.com/cake-lounge/image/upload/v1663143045/WilludaInn/samantha-gades-fIHozNWfcvs-unsplash_l6xerk.jpg);">
+
+                                <!-- Content -->
+                                <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4" style="height:130px">
+                                    <div>
+                                        <h3 class="card-title pt-2" style="margin-left:60px; color:black; margin-top:60px">Event Organize</h3>
+                                        <a class="btn btn-primary" style="margin-left:10px color:white" href="./book-event.php"><i class="fas fa-clone left"></i>Click Here</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Number</label>
-                <input type="text" class="form-control" id="number" placeholder="Number"
-                value="<?php echo $customer['number']?>">
-            </div>
-            <button type="button" class="btn btn-primary" id="update">Update</button>
-            <span style="margin-left:23vw"><button type="button" class="btn btn-danger" id="delete">Delete Account</button></span>
+        </section>
                                     
                                 </div>
 

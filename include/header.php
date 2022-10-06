@@ -127,7 +127,7 @@ else{
                    
                 </li>
                 <li>
-                    <a href="#">Booking</a>
+                    <a href="booking.php">Booking</a>
                     
                 </li>
                <li>

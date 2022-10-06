@@ -154,6 +154,21 @@ class Booking extends DBconnection {
 
     }
 
+    public function getBookingById($id){
+
+       if ($id) {
+
+            $sql = "SELECT * FROM `booking` WHERE `id`=" . $id;
+
+            $query = mysqli_query($this->connection, $sql);
+
+            $result = $query->fetch_assoc();
+
+            return $result;
+        }
+
+    }
+
     //Setters
 
     public function setId($id) {
