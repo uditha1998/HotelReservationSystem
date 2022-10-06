@@ -67,7 +67,7 @@ class Booking extends DBconnection {
             return FALSE;
         }
     }
-   public function reject() {
+    public function reject() {
 
         $sql = "UPDATE  `booking` SET "
                 . "`status` = 0  "
@@ -124,7 +124,6 @@ class Booking extends DBconnection {
         }
     }
     
-
     public function getterAllByBookings() {
 
 
@@ -141,7 +140,7 @@ class Booking extends DBconnection {
         return $array_res;
     }
 
-    function getTotalAmount($id){
+    public function getTotalAmount($id){
 
         $sql = "SELECT SUM(total) AS total FROM `booking` WHERE `customerId`=" . $id;
 
@@ -151,7 +150,7 @@ class Booking extends DBconnection {
         $row = mysqli_fetch_assoc($result); 
         $sum = $row['total'];
 
-return $sum;
+        return $sum;
 
     }
 

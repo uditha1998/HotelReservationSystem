@@ -43,7 +43,7 @@ class Customer extends DBconnection {
     public function Login() {
 
 
-            $sql = "SELECT id FROM customer WHERE email = '$this->email' AND password = '$this->password'";
+            $sql = "SELECT id FROM customer WHERE email = '$this->email' AND password = '$this->password' AND isActive = 1";
             $query = mysqli_query($this->connection, $sql);
             $result = $query->fetch_assoc();
 
@@ -286,6 +286,10 @@ class Customer extends DBconnection {
             $sql = "SELECT isActive FROM `customer` WHERE `email`=" . $email;
 
             $query = mysqli_query($this->connection, $sql);
+
+            $result = $query->fetch_assoc();
+
+            return $result;
 
             
         }
