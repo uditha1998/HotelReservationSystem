@@ -73,3 +73,48 @@
                 }
 
 });
+
+$(".ViewBooking").click(function () {
+
+    bookingId = $(this).attr("booking-id");
+
+        $.ajax({
+                        type: "POST",
+                        url: "controller/review.php",
+                        data: {bookingId: bookingId, option:'getBookingDetails'},
+                        dataType: "json",
+                        //if received a response from the server
+                        success: function (result) {
+
+                            if (result.status == "fail") {
+                                swal({
+                                    title: "Error!",
+                                    text: "Error adding review..!",
+                                    type: 'Try again',
+                                    timer: 2000,
+                                    showConfirmButton: true
+
+                                });
+                            } else if (result) {
+
+                                document.getElementById("serviceType").innerHTML =result['serviceType'];
+                                document.getElementById("checkIn").innerHTML =result['checkIn'];
+                                document.getElementById("checkOut").innerHTML =result['checkout'];
+                                document.getElementById("description").innerHTML =result['description'];
+                                document.getElementById("package").innerHTML =result['package'];
+                                document.getElementById("date").innerHTML =result['date'];
+                                document.getElementById("quantity").innerHTML =result['quantity'];
+                                document.getElementById("name").innerHTML =result['customerName'];
+                                document.getElementById("email").innerHTML =result['customerEmail'];
+                                document.getElementById("telephone").innerHTML =result['customerTelephone'];
+                                document.getElementById("total").innerHTML =result['total'];
+
+                                
+                            }
+
+
+                        }
+
+                    });
+
+});
