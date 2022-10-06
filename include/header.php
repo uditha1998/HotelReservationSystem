@@ -34,6 +34,29 @@ curl_close($ch);
 $data = json_decode($response);
 $currentTime = time();
 
+if($data && $currentTime){
+
+    $time = $currentTime;
+    $description = $data->weather[0]->description;
+    $humidity = $data->main->humidity;
+    $wind = $data->wind->speed;
+    $icon = $data->weather[0]->icon;
+    $tempMax = $data->main->temp_max;
+    $tempMin = $data->main->temp_min;
+    $city = $data->name;
+
+}
+else{
+    $time = "--";
+    $description = "--";
+    $humidity = "--";
+    $wind = "--";
+    $icon = "--";
+    $tempMax = "--";
+    $tempMin = "--";
+    $city = "--";
+}
+
 ?>
 
 <!-- HEADER -->
@@ -43,16 +66,16 @@ $currentTime = time();
 <div class="header_top">
     <div class="container-fluid">
         <div class="header_left float-left">
-            <span><?php echo date("l g:i a", $currentTime); ?></span>
-            <span><?php echo date("jS F, Y",$currentTime); ?></span>
-            <span><?php echo ucwords($data->weather[0]->description); ?></span>
+            <span><?php echo date("l g:i a", $time); ?></span>
+            <span><?php echo date("jS F, Y",$time); ?></span>
+            <span><?php echo ucwords($description); ?></span>
 
-            <span>Humidity: <?php echo $data->main->humidity; ?> %</span>
-            <span>Wind: <?php echo $data->wind->speed; ?> km/h</span>
-            <img src="https://openweathermap.org/img/w/<?php echo $data->weather[0]->icon; ?>.png"/>
-            <span><i class="lotus-icon-cloud"></i> <?php echo $data->main->temp_max; ?>°C</span>
-            <span><i class="lotus-icon-cloud"></i> <?php echo $data->main->temp_min; ?>°C</span>
-            <span><i class="lotus-icon-location"></i> 110 Awissawella Rd, <?php echo $data->name; ?></span>
+            <span>Humidity: <?php echo $humidity; ?> %</span>
+            <span>Wind: <?php echo $wind; ?> km/h</span>
+            <img src="https://openweathermap.org/img/w/<?php echo $icon; ?>.png"/>
+            <span><i class="lotus-icon-cloud"></i> <?php echo $tempMax; ?>°C</span>
+            <span><i class="lotus-icon-cloud"></i> <?php echo $tempMin; ?>°C</span>
+            <span><i class="lotus-icon-location"></i> 110 Awissawella Rd, <?php echo $city; ?></span>
             <span><i class="lotus-icon-phone"></i> 11 2 151 582</span>
         </div>
         <div class="header_right float-right">

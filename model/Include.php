@@ -10,6 +10,7 @@ include_once(dirname(__FILE__) . '/Customer.php');
 include_once(dirname(__FILE__) . '/Chat.php');
 
 include_once(dirname(__FILE__) . '/Booking.php');
+include_once(dirname(__FILE__) . '/Review.php');
 
 
 include_once(dirname(__FILE__) . '/Helper.php');

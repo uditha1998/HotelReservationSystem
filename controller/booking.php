@@ -74,7 +74,7 @@ if($_POST['option']=='bookAccommodation'){
             }
             else{
 
-                $result = ["status" => 'faillll'];
+                $result = ["status" => 'fail'];
 
                 echo json_encode($result);
             }

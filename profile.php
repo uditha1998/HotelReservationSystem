@@ -54,6 +54,20 @@ session_start();
     <![endif]-->
 
     <script src="jquery-3.3.1.min.js"></script>
+    <style>
+        .reviewDes{
+            width: 10ch;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .bookingDes{
+            width: 20ch;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    </style>
 </head>
 
 <!--[if IE 7]> <body class="ie7 lt-ie8 lt-ie9 lt-ie10"> <![endif]-->
@@ -81,84 +95,206 @@ session_start();
         <!-- ACCOUNT -->
         <section class="section-account parallax bg-11" >
 
-        <button type="button" class="btn btn-danger" style="margin-left:90vw" id="logout">Logout</button>
-        <a href="bookings-report.php">Report</a>
+        
+       
 
     <ul class="nav nav-tabs" style="width:50vw; margin-left:30vw">
-    <li class="active"><a data-toggle="tab" href="#home">Your Bookings</a></li>
-    <li><a data-toggle="tab" href="#menu1">Profile</a></li>
+    <li class="active"><a data-toggle="tab" href="#home" style="font-size:20px">Your Bookings</a></li>
+    <li><a data-toggle="tab" href="#menu1" style="font-size:20px">Profile</a></li>
+    <li><button type="button" class="btn btn-danger" style="margin-left:25vw; margin-top:10px" id="logout">Logout</button></li>
   </ul>
 
    <div class="tab-content" style="margin-left:30vw; margin-top:20px">
     <div id="home" class="tab-pane fade in active">
 
+    <input type="hidden" id="cusId" value=<?php $id?> >
+    <span class="badge badge-pill badge-success"><a href="bookings-report.php">Genarate a Bookings Report</a></span>
+    
+
     <?php
+    
         $Bookings = new Booking();
         foreach ($Bookings->getterAllById($_SESSION['id']) as $bookings) {
             ?>
 
-      <div class="container">
-    
-        <?php
-        if($bookings['serviceType']=="Accommodation"){
-            $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663142955/WilludaInn/vojtech-bruzek-Yrxr3bsPdS0-unsplash_vjrofl.jpg";
+            <div class="container">
+            
+                <?php
+                if($bookings['serviceType']=="Accommodation"){
+                    $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663142955/WilludaInn/vojtech-bruzek-Yrxr3bsPdS0-unsplash_vjrofl.jpg";
 
-            $body = $bookings['date'];
-        }
-        else if($bookings['serviceType']=="Restaurant"){
-            $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663142899/WilludaInn/judith-girard-marczak-26Tp__tUAWc-unsplash_gx7n8z.jpg";
-            $body = $bookings['description'];
-        }
-        else if($bookings['serviceType']=="Tour"){
-            $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663143025/WilludaInn/andy-holmes-0LJCEORiYg8-unsplash_nizm7c.jpg";
-            $body = $bookings['description'];
-        }
-        else if($bookings['serviceType']=="Event"){
-            $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663143045/WilludaInn/samantha-gades-fIHozNWfcvs-unsplash_l6xerk.jpg";
-            $body = $bookings['description'];
-        }
-        ?>
-             <div class="card mb-3" style="max-width: 540px; background-color:#dbdbe9; margin-top:5px; margin-bottom:5px;border-radius:10px" >
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img
-                            src=<?php echo $imgUrl ?>
-                            alt="Trendy Pants and Shoes"
-                            class="img-fluid rounded-start"
-                            style="width: 150px; height: 150px;"
-                        />
-                    </div>
-                    <div class="col-md-5">
-                        <div class="card-body">
-                            <h5 class="card-title" style="margin-top:20px;"><?php echo $bookings['serviceType'] ?></h5>
-                            <p class="card-text">
-                            <?php echo $body ?>
-                            </p>
-                            <p><?php echo $bookings['total']?></p>
-                            <p class="card-text" style="margin-top:20px;">
-                        <a href="#" class="btn btn-primary">View</a></p>
+                    $body = $bookings['date'];
+                }
+                else if($bookings['serviceType']=="Restaurant"){
+                    $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663142899/WilludaInn/judith-girard-marczak-26Tp__tUAWc-unsplash_gx7n8z.jpg";
+                    $body = $bookings['description'];
+                }
+                else if($bookings['serviceType']=="Tour"){
+                    $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663143025/WilludaInn/andy-holmes-0LJCEORiYg8-unsplash_nizm7c.jpg";
+                    $body = $bookings['description'];
+                }
+                else if($bookings['serviceType']=="Event"){
+                    $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663143045/WilludaInn/samantha-gades-fIHozNWfcvs-unsplash_l6xerk.jpg";
+                    $body = $bookings['description'];
+                }
+                ?>
+                    <div class="card mb-3" style="max-width: 540px; background-color:#dbdbe9; margin-top:5px; margin-bottom:5px;border-radius:10px" >
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img
+                                    src=<?php echo $imgUrl ?>
+                                    alt="Trendy Pants and Shoes"
+                                    class="img-fluid rounded-start"
+                                    style="width: 150px; height: 150px;border-radius: 25px; margin-top:10px;margin-left:10px"
+                                />
+                            </div>
+                            <div class="col-md-5">
+                                <div class="card-body">
+                                    <h5 class="card-title" style="margin-top:20px;"><?php echo $bookings['serviceType'] ?></h5>
+                                    <p class="card-text bookingDes">
+                                    <?php echo $body ?>
+                                    </p>
+                                    <p>Total : <?php echo $bookings['total']?>.00</p>
+                                    <p class="card-text" style="margin-top:20px;">
+                                <a href="#" class="btn btn-primary">View</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <?php
+                                $Review = new Review();
+                                $review = $Review->getReviewbyBookingId($bookings['id']);
+                                
+                                if($review==null){?>
+                                <br><br><br>
+                                    <u><a  class="addReviews" data-id="<?=$bookings['id'];?>" style="margin-top:50px"
+                                    data-target="#modalAddReview" data-toggle="modal" href="#">Add review</a></u>
+                                <?php   
+                                }
+                                else{?>
+                                <br>
+                                <div style="background-color: #d3e49a; border-radius: 25px; width: 150px;height: 130px;margin-left: -45px;">
+                                <span class="badge badge-pill badge-success" style="margin-left:40px;margin-top:10px;background-color: #69e755;color:black">Review</span><br>
+                                    <div class="card" >
+                                        <div class="card-body" style="margin-left:30px;margin-top:10px">
+                                            <h5 class="card-title"> <?php echo $review['reviewTitle']?> </h5>
+                                            <p class="card-text reviewDes" style="margin-left:5px;"> <?php echo $review['reviewDescription']?> </p>
+                                            <?php
+                                            if($review['rating']==1){
+                                                echo '<i class="fa fa-star" aria-hidden="true" style="color:red"></i>';
+                                            }
+                                            if($review['rating']==2){
+                                                echo '<i class="fa fa-star" aria-hidden="true" style="color:red"></i>
+                                                    <i class="fa fa-star" aria-hidden="true" style="color:red"></i>';
+                                            }
+                                            if($review['rating']==3){
+                                                echo '<i class="fa fa-star" aria-hidden="true" style="color:red"></i>
+                                                    <i class="fa fa-star" aria-hidden="true" style="color:red"></i>
+                                                    <i class="fa fa-star" aria-hidden="true" style="color:red"></i>';
+                                            }
+                                            if($review['rating']==4){
+                                                echo '<i class="fa fa-star" aria-hidden="true" style="color:red"></i>
+                                                    <i class="fa fa-star" aria-hidden="true" style="color:red"></i>
+                                                    <i class="fa fa-star" aria-hidden="true" style="color:red"></i>
+                                                    <i class="fa fa-star" aria-hidden="true" style="color:red"></i>';
+                                            }
+                                            if($review['rating']==5){
+                                                echo '<i class="fa fa-star" aria-hidden="true" style="color:red"></i>
+                                                    <i class="fa fa-star" aria-hidden="true" style="color:red"></i>
+                                                    <i class="fa fa-star" aria-hidden="true" style="color:red"></i>
+                                                    <i class="fa fa-star" aria-hidden="true" style="color:red"></i>
+                                                    <i class="fa fa-star" aria-hidden="true" style="color:red"></i>';
+                                            }
+                                            ?>
+                                            
+                                        </div>
+                                        </div>
+                                </div>
+
+                                <?php
+                                }
+
+                                ?>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <?php
+                        </div>
+                
 
-                        if($bookings['description']==null){
-                            echo '<a href="#" class="btn btn-info" style="margin-top:50px">Add review</a></p>';
-                        }
-                        else{
-                            echo $bookings['description'];
-                        }
 
-                        ?>
-                    </div>
                 </div>
-                </div>
-           
-
-
-      </div>
       <?php } ?>
+       
     </div>
+
+    <!-- add review -->
+
+    <div class="modal fade" id="modalAddReview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Add Review</h4>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+
+                    <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div style="margin-left:230px">
+                                        <i class="fa fa-university"></i><span style="font-size:20px"> Willuda Inn</span>
+                                        </div>
+                                    </div>
+
+                                    <h3>
+                                        Title
+                                    </h3>
+                                        <select class="form-select" aria-label="Default select example" id="selectreview" 
+                                        style="width:200px; height:30px;">
+                                                    <option selected>Select</option>
+                                                    <option value="1">Bad</option>
+                                                    <option value="2">Fair</option>
+                                                    <option value="3">Good</option>
+                                                    <option value="4">Very Good</option>
+                                                    <option value="5">Excellent</option>
+                    </select><span style="margin-left:100px">
+                        <i class="fa fa-star" aria-hidden="true" id="star1" style="visibility: hidden;"></i>
+                        <i class="fa fa-star" aria-hidden="true" id="star2" style="visibility: hidden;"></i>
+                        <i class="fa fa-star" aria-hidden="true" id="star3" style="visibility: hidden;"></i>
+                        <i class="fa fa-star" aria-hidden="true" id="star4" style="visibility: hidden;"></i>
+                        <i class="fa fa-star" aria-hidden="true" id="star5" style="visibility: hidden;"></i>
+                    </span>
+
+                                        <h3>
+                                        Description
+                                    </h3>
+                                    <br>
+                                     <textarea class="form-control" aria-label="With textarea" id="reviewDes"></textarea>
+                                    
+                                
+
+                                    <div class="row">
+                                     
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-success" id="addReview">Add Review</button>
+                </div>
+                </div>
+            </div>
+</div>
+    <!-- end review -->
     <div id="menu1" class="tab-pane fade">
       <div style="margin-left:5vw;">
 
@@ -337,6 +473,54 @@ session_start();
     </div>
     <!-- END / PAGE WRAP -->
 
+    <script>
+
+       document.getElementById("selectreview").onchange = function () {
+
+            var e = document.getElementById("selectreview");
+            var value = e.value;
+            var selectedReview = e.options[e.selectedIndex].text;
+
+            if(selectedReview=='Bad'){
+                document.getElementById("star1").style.visibility = "visible"; 
+                document.getElementById("star2").style.visibility = "invisible"; 
+                document.getElementById("star3").style.visibility = "invisible";
+                document.getElementById("star4").style.visibility = "invisible";
+                document.getElementById("star5").style.visibility = "invisible";
+            }
+            if(selectedReview=='Fair'){
+                document.getElementById("star1").style.visibility = "visible"; 
+                document.getElementById("star2").style.visibility = "visible"; 
+                document.getElementById("star3").style.visibility = "invisible";
+                document.getElementById("star4").style.visibility = "invisible";
+                document.getElementById("star5").style.visibility = "invisible";
+            }
+            if(selectedReview=='Good'){
+                document.getElementById("star1").style.visibility = "visible"; 
+                document.getElementById("star2").style.visibility = "visible"; 
+                document.getElementById("star3").style.visibility = "visible";
+                document.getElementById("star4").style.visibility = "invisible";
+                document.getElementById("star5").style.visibility = "invisible";
+            }
+            if(selectedReview=='Very Good'){
+                document.getElementById("star1").style.visibility = "visible"; 
+                document.getElementById("star2").style.visibility = "visible"; 
+                document.getElementById("star3").style.visibility = "visible";
+                document.getElementById("star4").style.visibility = "visible";
+                document.getElementById("star5").style.visibility = "invisible";
+            }
+            if(selectedReview=='Excellent'){
+                document.getElementById("star1").style.visibility = "visible"; 
+                document.getElementById("star2").style.visibility = "visible"; 
+                document.getElementById("star3").style.visibility = "visible";
+                document.getElementById("star4").style.visibility = "visible";
+                document.getElementById("star5").style.visibility = "visible";
+            }
+            
+
+        };
+    </script>
+
 
     <!-- LOAD JQUERY -->
     <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="js/lib/jquery-1.11.0.min.js"></script>
@@ -359,6 +543,7 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script src="include/plugin/sweetalert/sweetalert/sweetalert.min.js"></script>
+      <script type="text/javascript" src="validations/js/reviews.js"></script>
       <script type="text/javascript" src="validations/js/customer.js"></script>
 
     
