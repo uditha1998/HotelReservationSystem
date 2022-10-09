@@ -19,7 +19,7 @@ class Attraction extends DBconnection {
         date_default_timezone_set('Asia/Colombo');
         $createdAt = date('Y-m-d H:i:s');
 
-        $sql = "INSERT INTO `attraction` (name, description, image) VALUES  ('" . $this->name . "', '" . $this->description . "','" . $this->image. "')";
+        $sql = "INSERT INTO `attraction` (name, image,description ) VALUES  ('" . $this->name . "', '" . $this->image . "','" . $this->description. "')";
 
         if (mysqli_query($this->connection, $sql)) {
 
@@ -31,7 +31,7 @@ class Attraction extends DBconnection {
 
     public function update() {
 
-        $sql = "UPDATE  `activity` SET "
+        $sql = "UPDATE  `attraction` SET "
                 . "`name` ='" . $this->name . "', "
                 . "`image` ='" . $this->image . "', "
                 . "`description` ='" . $this->description . "' "
@@ -92,9 +92,10 @@ class Attraction extends DBconnection {
     
     
                 $this->id = $result['id'];
-                $this->title = $result['name'];
-                $this->description = $result['description'];
+                $this->name = $result['name'];  
                 $this->image = $result['image'];
+                $this->description = $result['description'];
+              
     
     
     
