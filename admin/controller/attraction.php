@@ -61,7 +61,7 @@ if (isset($_POST['create'])) {
             }
         }
     
-    $Attraction->setAttraction($name,$description,$imgName);
+    $Attraction->setAttraction($name,$imgName,$description);
     
     if ($Attraction->create()) {
     
@@ -181,7 +181,9 @@ if (isset($_POST['update'])) {
     exit();
 }
 
-
+if(empty($_POST['option'])){
+    $_POST['option']="";
+}
 if ($_POST['option'] == 'delete') {
     $Attraction = new Attraction();
     $ARR = $Attraction->getterAllById($_POST['id']);

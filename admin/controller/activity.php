@@ -182,6 +182,9 @@ if (isset($_POST['update'])) {
 }
 
 
+if(empty($_POST['option'])){
+    $_POST['option']="";
+}
 if ($_POST['option'] == 'delete') {
     $Activity = new Activity();
     $ARR = $Activity->getterAllById($_POST['id']);
