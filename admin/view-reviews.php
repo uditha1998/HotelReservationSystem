@@ -31,7 +31,7 @@ include_once(dirname(__FILE__) . '../../model/include.php');
 
                     <div class="header">
                         <h1 class="header-title">
-                            Manage Bookings
+                            Manage Reviews
                         </h1>
 
                     </div>
@@ -44,47 +44,33 @@ include_once(dirname(__FILE__) . '../../model/include.php');
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Booking No</th>
-                                            <th scope="col">Check In</th>
-                                            <th scope="col">Check Out</th>
-                                            <th scope="col">Quantity</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Service Type</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">Review Id</th>
+                                            <th scope="col">Customer Id</th>
+                                            <th scope="col">Booking Id</th>
+                                            <th scope="col">Review Title</th>
+                                            <th scope="col">Review Description</th>
+                                            <th scope="col">Rating</th>
                                             <th scope="col">Operations</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $Bookings = new Booking();
-                                        foreach ($Bookings->getterAllByBookings() as $bookings) {
+                                        $Reviews = new Review();
+                                        foreach ($Reviews->getAllReviews() as $Reviews) {
                                         ?>
+                                            <tr>
+                                            <td><?= $Reviews['id'] ?></td>
+                                            <td><?= $Reviews['cusId'] ?></td>
+                                            <td><?= $Reviews['bookingId'] ?></td>
+                                            <td><?= $Reviews['reviewTitle'] ?></td>
+                                            <td><?= $Reviews['reviewDescription'] ?></td>
+                                            <td><?= $Reviews['rating'] ?></td>
+                                            
+                                            <td><a class="btn btn-danger delete-review" review-id-delete="<?= $Reviews['id']; ?>">Delete</a></td>
 
-                                            <td><?= $bookings['id'] ?></td>
-                                            <td><?= $bookings['checkIn'] ?></td>
-                                            <td><?= $bookings['checkOut'] ?></td>
-                                            <td><?= $bookings['quantity'] ?></td>
-                                            <td><?= $bookings['date'] ?></td>
-                                            <td><?= $bookings['serviceType'] ?></td>
-                                            <td>
-                                                <?php
-                                                if ($bookings['status'] == 1) {
-                                                ?>
+                                            </tr>
+                                            
 
-                                                    <a class="btn btn-primary">Active</a>
-
-                                                <?php
-
-                                                } else {
-                                                ?>
-                                                    <a class="btn btn-danger">Rejected</a>
-                                                <?php
-
-                                                }
-                                                ?>
-
-                                            </td>
-                                            <td><a href="./view-single-booking.php?id=<?= $bookings['id'] ?>" class="btn btn-success"></btn>View</td>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -92,10 +78,26 @@ include_once(dirname(__FILE__) . '../../model/include.php');
                             </div>
                         </div>
                     </div>
+
+
+
+
                 </div>
             </main>
+
+
+
+
         </div>
+
+
+
     </div>
+
+
+
+
+
     <script src="js/app.js"></script>
     <script src="js/ajax/service.js" type="text/javascript"></script>
     <script>
@@ -118,6 +120,7 @@ include_once(dirname(__FILE__) . '../../model/include.php');
         tinymce.init({
 
             selector: "#description",
+
             // ===========================================
 
             // INCLUDE THE PLUGIN
@@ -209,7 +212,7 @@ include_once(dirname(__FILE__) . '../../model/include.php');
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js" integrity="sha512-MqEDqB7me8klOYxXXQlB4LaNf9V9S0+sG1i8LtPOYmHqICuEZ9ZLbyV3qIfADg2UJcLyCm4fawNiFvnYbcBJ1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="text/javascript" src="js/ajax/customerMng.js"></script>
+    <script type="text/javascript" src="validations/js/reviews.js"></script>
 
 </body>
 

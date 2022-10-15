@@ -28,6 +28,7 @@ curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_VERBOSE, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
 $response = curl_exec($ch);
 
 curl_close($ch);
@@ -99,7 +100,7 @@ else{
     <div class="container">
         <!-- HEADER LOGO -->
         <div class="header_logo">
-            <a href="#"><img src="images/logo-header.png" alt=""></a>
+            <a href="#"><img src="https://res.cloudinary.com/cake-lounge/image/upload/v1665477312/WilludaInn/Luxury_Hotel_n5ggfz.png" alt="logo"></a>
         </div>
         <!-- END / HEADER LOGO -->
 

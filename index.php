@@ -1,3 +1,14 @@
+<?php
+session_start();
+include_once(dirname(__FILE__) . '/model/include.php');
+
+
+ if (!isset($_SESSION['id'])) {
+    $id = "";
+} else {
+    $id = $_SESSION['id'];
+}
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,8 +31,8 @@
 <body>
 
     <?php
-    session_start();
-    include './include/preloader.php';
+    
+    //include './include/preloader.php';
     ?>
 
     <!-- PAGE WRAP -->
@@ -719,9 +730,58 @@
         </section>
         <!-- END / GALLERY -->
 
-        <?php
-        include './include/footer.php';
-        ?>
+        <!-- REVIEW -->
+    </div>
+    <section>
+
+        <!-- <?php
+
+        //$Reviews = new $Review();
+        //foreach ($Reviews->getReviewById() as $Reviews) {
+        ?>-->
+        
+        <!--<div class="container">
+
+            <?php
+            // if ($bookings['serviceType'] == "Accommodation") {
+            //     $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663142955/WilludaInn/vojtech-bruzek-Yrxr3bsPdS0-unsplash_vjrofl.jpg";
+
+            //     $body = $bookings['date'];
+            // } else if ($bookings['serviceType'] == "Restaurant") {
+            //     $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663142899/WilludaInn/judith-girard-marczak-26Tp__tUAWc-unsplash_gx7n8z.jpg";
+            //     $body = $bookings['description'];
+            // } else if ($bookings['serviceType'] == "Tour") {
+            //     $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663143025/WilludaInn/andy-holmes-0LJCEORiYg8-unsplash_nizm7c.jpg";
+            //     $body = $bookings['description'];
+            // } else if ($bookings['serviceType'] == "Event") {
+            //     $imgUrl = "https://res.cloudinary.com/cake-lounge/image/upload/v1663143045/WilludaInn/samantha-gades-fIHozNWfcvs-unsplash_l6xerk.jpg";
+            //     $body = $bookings['description'];
+            // }
+            ?>
+            <div class="card mb-3" style="max-width: 1000px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+            -->
+    </section>
+    <!-- END / REVIEW -->
+
+    <?php
+    include './include/footer.php';
+    ?>
 
     </div>
     <!-- END / PAGE WRAP -->

@@ -2,9 +2,11 @@
 $(document).ready(function () {
             //Create slider
 
+            
             $("#submitbtn").click(function (event) {
                 event.preventDefault();
                 ;
+               
 
                 if (!$('#name').val() || $('#name').val().length === 0) {
                     swal({
