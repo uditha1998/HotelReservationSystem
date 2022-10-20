@@ -28,12 +28,10 @@ include_once(dirname(__FILE__) . '../../model/include.php');
 
             <main class="content">
                 <div class="container-fluid">
-
                     <div class="header">
                         <h1 class="header-title">
                             Manage Bookings
                         </h1>
-
                     </div>
 
                     <!--From start-->
@@ -59,10 +57,10 @@ include_once(dirname(__FILE__) . '../../model/include.php');
                                         $Bookings = new Booking();
                                         foreach ($Bookings->getterAllByBookings() as $bookings) {
                                         ?>
-
+                                        <tr>
                                             <td><?= $bookings['id'] ?></td>
                                             <td><?= $bookings['checkIn'] ?></td>
-                                            <td><?= $bookings['checkOut'] ?></td>
+                                            <td><?= $bookings['checkout'] ?></td>
                                             <td><?= $bookings['quantity'] ?></td>
                                             <td><?= $bookings['date'] ?></td>
                                             <td><?= $bookings['serviceType'] ?></td>
@@ -85,7 +83,8 @@ include_once(dirname(__FILE__) . '../../model/include.php');
 
                                             </td>
                                             <td><a href="./view-single-booking.php?id=<?= $bookings['id'] ?>" class="btn btn-success"></btn>View</td>
-                                        <?php } ?>
+                                            </tr>
+                                         <?php } ?>
                                     </tbody>
                                 </table>
 

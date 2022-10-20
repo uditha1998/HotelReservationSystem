@@ -93,7 +93,32 @@ class Inquiries extends DBconnection {
         }
     }
 
+    public function getAllInquiries(){
+        $sql = "SELECT * FROM `inquiries` ";
 
+        $query = mysqli_query($this->connection, $sql);
+
+        $array_res = array();
+        while ($row = $query->fetch_assoc()) {
+
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+
+    public function updateInquiry($id){
+        $sql = "UPDATE `inquiries` SET `status` ='" . 1 . "' WHERE `id`='" . $id . "'";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        if ($result) {
+
+            return TRUE;
+        } else {
+
+            return FALSE;
+        }
+    }
 }
 
 ?>

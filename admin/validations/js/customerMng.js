@@ -1,6 +1,6 @@
     
     
-    $('.block-customer').click(function () {
+    $(".block-customer").click(function () {
 
 
 

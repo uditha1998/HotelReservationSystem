@@ -50,7 +50,7 @@ include_once(dirname(__FILE__) . '../../model/include.php');
                                             <th scope="col">Review Title</th>
                                             <th scope="col">Review Description</th>
                                             <th scope="col">Rating</th>
-                                            <th scope="col">Operations</th>
+                                            <th scope="col">Operations         </th>
                                         </tr>
                                     </thead>
                                     <tbody>
